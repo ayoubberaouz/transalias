@@ -1,0 +1,141 @@
+@extends('layouts.app')
+
+@section('content')
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-md-4">
+                    <h4>Liste des notes de débit</h4>
+                </div>
+                <div class="col-md-8">
+                    <form method="GET" action="{{ route('export-notes-debit') }}">
+                        <div class="row">
+                            <div class="col-md-2 mt-2 text-right">
+                                <label for="client">Société : </label>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <select class="form-control custom-select" name="societe-export" id="societe-export">
+                                    <option value="1">Transalias</option>
+                                    <option value="2">Akbar Services</option>
+                                    <option value="3">Inter Global Africa</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mt-2 text-right">
+                                <label for="client">Date Notes de Débit : </label>
+                            </div>
+                            <div class="col-md-2 mb-2">
+                                <select class="form-control custom-select" name="year-export" id="year-export">
+                                    @foreach ($years as $year)
+                                        <option value={{ $year }}>{{ $year }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class='btn btn-success text-white float-right'>
+                                    <i class="far fa-file-excel"></i> Exporter
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <form method="GET" action="{{ route('noteDebitDossiers.index') }}">
+                <div class="row mb-2">
+                    <div class="col-sm-3">
+                        <label for="client">Société : </label>
+                        <select class="form-control custom-select" name="societe" id="societe">
+                            <option value="1">Transalias</option>
+                            <option value="2">Akbar Services</option>
+                            <option value="3">Inter Global Africa</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="client">Date Notes de Débit : </label>
+                        <select class="form-control custom-select" name="year" id="year">
+                            @foreach ($years as $year)
+                                <option value={{ $year }}>{{ $year }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 mb-1">
+                        <label for="client">Cilent : </label>
+                        {!! Form::select('client', $clientsOptions, null, ['class' => 'form-control custom-select']) !!}
+                    </div>
+                    <div class="col-sm-3 mb-1">
+                        <label for="num">N° Dossier : </label>
+                        <input type="text" class="form-control" id="num" name="num">
+                    </div>
+                    <div class="col-sm-3 mb-1">
+                        <label for="transporteur">Transporteur : </label>
+                        <input type="text" class="form-control" id="transporteur" name="transporteur">
+                    </div>
+                    <div class="col-sm-3 mb-1">
+                        <label for="mat_remorque">Matricule Remorque : </label>
+                        <input type="text" class="form-control" id="mat_remorque" name="mat_remorque">
+                    </div>
+                    <div class="col-sm-3 mb-1">
+                        <label for="mat_tracteur">Matricule Tracteur : </label>
+                        <input type="text" class="form-control" id="mat_tracteur" name="mat_tracteur">
+                    </div>
+                    <div class="col-sm-3 mb-1">
+                        <label for="num_note_debit">N° Note de Débit : </label>
+                        <input type="text" class="form-control" id="num_note_debit" name="num_note_debit">
+                    </div>
+                    <div class="col-sm-1 mb-1" style="margin-top: 2rem">
+                        <button type="submit" class="btn btn-default" style="height: 38px"><i
+                                class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <div class="content px-3">
+
+        @include('flash::message')
+
+        <div class="clearfix"></div>
+
+        <div class="card">
+            <div class="card-body p-0">
+                @include('note_debit_dossiers.table')
+
+                <div class="card-footer clearfix float-right">
+                    <div class="float-right">
+                        @include('adminlte-templates::common.paginate', ['records' => $noteDebitDossiers])
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+<script>
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const numParam = urlParams.get('num');
+        const transporteurParam = urlParams.get('transporteur');
+        const matRemorqueParam = urlParams.get('mat_remorque');
+        const matTracteurParam = urlParams.get('mat_tracteur');
+        const numNoteDebitParam = urlParams.get('num_note_debit');
+        const yearParam = urlParams.get('year');
+        const societeParam = urlParams.get('societe');
+
+        document.getElementById("num").value = numParam || '';
+        document.getElementById("transporteur").value = transporteurParam || '';
+        document.getElementById("mat_remorque").value = matRemorqueParam || '';
+        document.getElementById("mat_tracteur").value = matTracteurParam || '';
+        document.getElementById("num_note_debit").value = numNoteDebitParam || '';
+        var yearSelect = document.getElementById("year");
+        if (yearParam) {
+            yearSelect.value = yearParam;
+        }
+        var societeSelect = document.getElementById("societe");
+        if (societeParam) {
+            societeSelect.value = societeParam;
+        }
+    };
+</script>

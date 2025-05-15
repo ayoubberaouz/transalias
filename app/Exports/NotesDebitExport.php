@@ -37,6 +37,8 @@ class NotesDebitExport implements FromCollection, WithHeadings, WithMapping
         'etat_cloture',
         'etat_facture',
         'etat_notedebit',
+        'etat_transitaire',
+        'etat_validation',
         'date_cloture',
         'montant',
         'devise',
@@ -150,7 +152,7 @@ class NotesDebitExport implements FromCollection, WithHeadings, WithMapping
         unset($rowData['notedebit3']);
         unset($rowData['notedebit4']);
         unset($rowData['notedebit5']);
-        
+
         return $rowData;
     }
 }

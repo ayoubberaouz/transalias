@@ -44,7 +44,6 @@ class FacturesDossierController extends AppBaseController
     public function index(Request $request)
     {
         $dates = FacturesDossier::distinct()->pluck('dateFacturation');
-        // dd($dates);
 
         $years = $dates->map(function ($date) {
             $dateTime = \DateTime::createFromFormat('d/m/Y', $date);

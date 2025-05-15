@@ -36,6 +36,8 @@ class FacturesExport implements FromCollection, WithHeadings, WithMapping
         'etat_cloture',
         'etat_facture',
         'etat_notedebit',
+        'etat_transitaire',
+        'etat_validation',
         'date_cloture',
         'montant',
         'devise',
@@ -149,7 +151,7 @@ class FacturesExport implements FromCollection, WithHeadings, WithMapping
         unset($rowData['facturer3']);
         unset($rowData['facturer4']);
         unset($rowData['facturer5']);
-        
+
         return $rowData;
     }
 }

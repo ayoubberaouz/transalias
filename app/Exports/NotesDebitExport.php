@@ -12,7 +12,6 @@ class NotesDebitExport implements FromCollection, WithHeadings, WithMapping
 {
     protected $hiddenColumns = [
         'id',
-        'heurenotedebit',
         'dateinsertion',
         'a_notedebit',
         'montantdebit',
@@ -26,7 +25,6 @@ class NotesDebitExport implements FromCollection, WithHeadings, WithMapping
         'designation3',
         'designation4',
         'designation5',
-        'heure_chargement', 
         'lieu_livraison', 
         'lien_chargement', 
         'navire',

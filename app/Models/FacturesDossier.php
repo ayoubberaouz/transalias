@@ -11,7 +11,6 @@ use Eloquent as Model;
  *
  * @property string $numFacturation
  * @property string $dateFacturation
- * @property string $heureFacturation
  * @property string $dateInsertion
  * @property string $a_facture
  * @property string $mod_paiement
@@ -38,7 +37,6 @@ class FacturesDossier extends Model
         'numFacturation',
         'iddossier',
         'dateFacturation',
-        'heureFacturation',
         'dateInsertion',
         'a_facture',
         'mod_paiement',
@@ -67,9 +65,8 @@ class FacturesDossier extends Model
     protected $casts = [
         'id' => 'integer',
         'numFacturation' => 'string',
-        'dateFacturation' => 'string',
-        'heureFacturation' => 'string',
-        'dateInsertion' => 'string',
+        'dateFacturation' => 'date',
+        'dateInsertion' => 'date',
         'a_facture' => 'string',
         'mod_paiement' => 'string',
         'a_paye' => 'string',

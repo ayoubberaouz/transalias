@@ -244,12 +244,11 @@ class DossiersController extends AppBaseController
         $input = $request->all();
         
         $currentDate = Carbon::now('Africa/Casablanca');
-        $formattedDate = $currentDate->format('d/m/Y');
         
         $input['etat_cloture'] = 0;
         $input['etat_facture'] = 0;
         $input['etat_notedebit'] = 0;
-        $input['date_insertion'] = $formattedDate;
+        $input['date_insertion'] = $currentDate;
         $input['etat_validation'] = 0;
 
         $dossiers = $this->dossiersRepository->create($input);

@@ -8,7 +8,6 @@ return array (
     'id' => 'Id',
     'numFacturation' => 'Numfacturation',
     'dateFacturation' => 'Datefacturation',
-    'heureFacturation' => 'Heurefacturation',
     'dateInsertion' => 'Dateinsertion',
     'a_facture' => 'A Facture',
     'mod_paiement' => 'Mod Paiement',

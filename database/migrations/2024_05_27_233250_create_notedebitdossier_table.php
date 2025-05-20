@@ -17,9 +17,8 @@ class CreateNoteDebitDossierTable extends Migration
         Schema::create('NoteDebitDossier', function (Blueprint $table) {
             $table->increments('id');
             $table->string('numnotedebit')->nullable();
-            $table->string('datenotationdebit')->nullable();
-            $table->string('heurenotedebit')->nullable();
-            $table->string('dateinsertion')->nullable();
+            $table->date('datenotationdebit')->nullable();
+            $table->date('dateinsertion')->nullable();
             $table->string('a_notedebit')->nullable();
             $table->string('mod_paiement')->nullable();
             $table->string('a_paye')->nullable();

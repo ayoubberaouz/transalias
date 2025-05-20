@@ -12,7 +12,6 @@ class DossiersExport implements FromCollection, WithHeadings, WithMapping
 {
     protected $hiddenColumns = [
         'id', 
-        'heure_chargement', 
         'lieu_livraison', 
         'lien_chargement', 
         'navire',

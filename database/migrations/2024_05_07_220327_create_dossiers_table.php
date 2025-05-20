@@ -16,8 +16,7 @@ class CreateDossiersTable extends Migration
     {
         Schema::create('dossiers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('date_charg')->nullable();
-            $table->string('heure_chargement')->nullable();
+            $table->date('date_charg')->nullable();
             $table->string('lieu_livraison')->nullable();
             $table->string('transporteur')->nullable();
             $table->string('destinsation')->nullable();
@@ -25,7 +24,7 @@ class CreateDossiersTable extends Migration
             $table->string('reference')->nullable();
             $table->string('navire')->nullable();
             $table->string('observation')->nullable();
-            $table->string('date_insertion')->nullable();
+            $table->date('date_insertion')->nullable();
             $table->string('mat_tracteur')->nullable();
             $table->string('mat_remorque')->nullable();
             $table->string('nom_chauffeur')->nullable();
@@ -33,14 +32,14 @@ class CreateDossiersTable extends Migration
             $table->boolean('etat_cloture')->nullable();
             $table->boolean('etat_facture')->nullable();
             $table->boolean('etat_notedebit')->nullable();
-            $table->string('date_cloture')->nullable();
+            $table->date('date_cloture')->nullable();
             $table->string('montant')->nullable();
             $table->string('devise')->nullable();
             $table->string('expediteur')->nullable();
-            $table->string('date_livraison')->nullable();
-            $table->string('date_embarquement')->nullable();
-            $table->string('date_sortie_port')->nullable();
-            $table->string('date_courrier')->nullable();
+            $table->date('date_livraison')->nullable();
+            $table->date('date_embarquement')->nullable();
+            $table->date('date_sortie_port')->nullable();
+            $table->date('date_courrier')->nullable();
             $table->string('reception')->nullable();
             $table->string('montant_client')->nullable();
             $table->string('tele')->nullable();

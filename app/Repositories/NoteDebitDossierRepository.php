@@ -20,7 +20,6 @@ class NoteDebitDossierRepository extends BaseRepository
     protected $fieldSearchable = [
         'numnotedebit',
         'datenotationdebit',
-        'heurenotedebit',
         'dateinsertion',
         'a_notedebit',
         'mod_paiement',

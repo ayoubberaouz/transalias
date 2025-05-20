@@ -8,7 +8,6 @@ return array (
     'id' => 'Id',
     'numnotedebit' => 'Numnotedebit',
     'datenotationdebit' => 'Datenotationdebit',
-    'heurenotedebit' => 'Heurenotedebit',
     'dateinsertion' => 'Dateinsertion',
     'a_notedebit' => 'A Notedebit',
     'mod_paiement' => 'Mod Paiement',

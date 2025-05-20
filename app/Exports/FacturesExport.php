@@ -12,7 +12,6 @@ class FacturesExport implements FromCollection, WithHeadings, WithMapping
 {
     protected $hiddenColumns = [
         'id',
-        'heureFacturation',
         'dateInsertion',
         'a_facture',
         'mod_paiement',
@@ -25,7 +24,6 @@ class FacturesExport implements FromCollection, WithHeadings, WithMapping
         'designation3',
         'designation4',
         'designation5',
-        'heure_chargement', 
         'lieu_livraison', 
         'lien_chargement', 
         'navire',

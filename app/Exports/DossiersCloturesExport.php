@@ -14,7 +14,6 @@ class DossiersCloturesExport implements FromCollection, WithHeadings, WithMappin
 {
     protected $hiddenColumns = [
         'id', 
-        'heure_chargement', 
         'lieu_livraison', 
         'lien_chargement', 
         'navire',

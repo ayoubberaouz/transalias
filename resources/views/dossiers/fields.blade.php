@@ -46,7 +46,7 @@
 <!-- Date Charg Field -->
 <div class="form-group col-md-4 col-lg-3">
     {!! Form::label('date_charg', 'Date de chargement :') !!}
-    {!! Form::text('date_charg', null, ['class' => 'form-control']) !!}
+    {!! Form::date('date_charg', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Lieu Chargement Field -->
@@ -102,19 +102,19 @@
 <!-- Date Embarquement Field -->
 <div class="form-group col-md-4 col-lg-3">
     {!! Form::label('date_embarquement', "Date d'embarquement :") !!}
-    {!! Form::text('date_embarquement', null, ['class' => 'form-control']) !!}
+    {!! Form::date('date_embarquement', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Date Sortie Port Field -->
 <div class="form-group col-md-4 col-lg-3">
     {!! Form::label('date_sortie_port', 'Date sortie de port :') !!}
-    {!! Form::text('date_sortie_port', null, ['class' => 'form-control']) !!}
+    {!! Form::date('date_sortie_port', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Date Livraison Field -->
 <div class="form-group col-md-4 col-lg-3">
     {!! Form::label('date_livraison', 'Date de livraison :') !!}
-    {!! Form::text('date_livraison', null, ['class' => 'form-control']) !!}
+    {!! Form::date('date_livraison', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Transitaire ALG Field -->
@@ -136,7 +136,7 @@
 <!-- Date Courrier Field -->
 <div class="form-group col-md-4 col-lg-3">
     {!! Form::label('date_courrier', 'Date de courrier :') !!}
-    {!! Form::text('date_courrier', null, ['class' => 'form-control']) !!}
+    {!! Form::date('date_courrier', null, ['class' => 'form-control']) !!}
 </div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

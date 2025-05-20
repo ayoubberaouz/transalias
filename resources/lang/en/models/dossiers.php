@@ -7,7 +7,6 @@ return array (
   array (
     'id' => 'Id',
     'date_charg' => 'Date Charg',
-    'heure_chargement' => 'Heure Chargement',
     'lieu_livraison' => 'Lieu Livraison',
     'transporteur' => 'Transporteur',
     'destination' => 'Destination',

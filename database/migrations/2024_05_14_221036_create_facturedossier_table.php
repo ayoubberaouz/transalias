@@ -16,9 +16,8 @@ class CreateFactureDossierTable extends Migration
         Schema::create('FacturesDossier', function (Blueprint $table) {
             $table->id();
             $table->string('numFacturation')->nullable();
-            $table->string('dateFacturation')->nullable();
-            $table->string('heureFacturation')->nullable();
-            $table->string('dateInsertion')->nullable();
+            $table->date('dateFacturation')->nullable();
+            $table->date('dateInsertion')->nullable();
             $table->string('a_facture')->nullable();
             $table->string('mod_paiement')->nullable();
             $table->string('a_paye')->nullable();

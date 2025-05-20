@@ -238,8 +238,7 @@ class FacturesDossierController extends AppBaseController
         $input['etat_paiement'] = 'Non';
         $input['etat_validation'] = 0;
 
-        $formattedDate = $currentDate->format('d/m/Y');
-        $input['dateInsertion'] = $formattedDate;
+        $input['dateInsertion'] = $currentDate;
 
         $dossier->etat_facture = 1;
         $dossier->save();

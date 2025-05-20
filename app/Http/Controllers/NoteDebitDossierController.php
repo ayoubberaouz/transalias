@@ -236,8 +236,7 @@ class NoteDebitDossierController extends AppBaseController
         $input['iddossier'] = $id;
         $input['etat_paiement'] = 'Non';
 
-        $formattedDate = $currentDate->format('d/m/Y');
-        $input['dateinsertion'] = $formattedDate;
+        $input['dateinsertion'] = $currentDate;
 
         $dossier->etat_notedebit = 1;
         $dossier->save();

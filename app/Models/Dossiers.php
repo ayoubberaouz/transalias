@@ -10,7 +10,6 @@ use Eloquent as Model;
  * @version May 7, 2024, 10:03 pm +07
  *
  * @property string $date_charg
- * @property string $heure_chargement
  * @property string $lieu_livraison
  * @property string $transporteur
  * @property string $destination
@@ -49,7 +48,6 @@ class Dossiers extends Model
 
     public $fillable = [
         'date_charg',
-        'heure_chargement',
         'lieu_livraison',
         'transporteur',
         'destinsation',
@@ -93,8 +91,7 @@ class Dossiers extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'date_charg' => 'string',
-        'heure_chargement' => 'string',
+        'date_charg' => 'date',
         'lieu_livraison' => 'string',
         'transporteur' => 'string',
         'destinsation' => 'string',
@@ -103,7 +100,7 @@ class Dossiers extends Model
         'reference' => 'string',
         'navire' => 'string',
         'observation' => 'string',
-        'date_insertion' => 'string',
+        'date_insertion' => 'date',
         'mat_tracteur' => 'string',
         'mat_remorque' => 'string',
         'nom_chauffeur' => 'string',
@@ -111,14 +108,14 @@ class Dossiers extends Model
         'etat_cloture' => 'boolean',
         'etat_facture' => 'boolean',
         'etat_notedebit' => 'boolean',
-        'date_cloture' => 'string',
+        'date_cloture' => 'date',
         'montant' => 'string',
         'devise' => 'string',
         'expediteur' => 'string',
-        'date_livraison' => 'string',
-        'date_embarquement' => 'string',
-        'date_sortie_port' => 'string',
-        'date_courrier' => 'string',
+        'date_livraison' => 'date',
+        'date_embarquement' => 'date',
+        'date_sortie_port' => 'date',
+        'date_courrier' => 'date',
         'reception' => 'string',
         'montant_client' => 'string',
         'tele' => 'string',

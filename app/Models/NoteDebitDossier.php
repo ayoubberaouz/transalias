@@ -11,7 +11,6 @@ use Eloquent as Model;
  *
  * @property string $numnotedebit
  * @property string $datenotationdebit
- * @property string $heurenotedebit
  * @property string $dateinsertion
  * @property string $a_notedebit
  * @property string $mod_paiement
@@ -39,7 +38,6 @@ class NoteDebitDossier extends Model
         'numnotedebit',
         'iddossier',
         'datenotationdebit',
-        'heurenotedebit',
         'dateinsertion',
         'a_notedebit',
         'mod_paiement',
@@ -69,9 +67,8 @@ class NoteDebitDossier extends Model
     protected $casts = [
         'id' => 'integer',
         'numnotedebit' => 'string',
-        'datenotationdebit' => 'string',
-        'heurenotedebit' => 'string',
-        'dateinsertion' => 'string',
+        'datenotationdebit' => 'date',
+        'dateinsertion' => 'date',
         'a_notedebit' => 'string',
         'mod_paiement' => 'string',
         'a_paye' => 'string',

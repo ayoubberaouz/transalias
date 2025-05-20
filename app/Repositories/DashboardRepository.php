@@ -66,7 +66,7 @@ class DashboardRepository
         $closedDossiers = array_fill(0, 12, 0); // Initialize array with 12 zeros
         
         foreach ($dashboardInfo['dossier'] as $dossier) {
-            $date = \DateTime::createFromFormat('d/m/Y', $dossier->date_insertion);
+            $date = $dossier->date_insertion;
             $monthIndex = (int) $date->format('n') - 1; // Get month index (0-11)
             
             if ($dossier->etat_cloture == 0) {
@@ -86,7 +86,7 @@ class DashboardRepository
         $unpaidFactures = array_fill(0, 12, 0); // Initialize array with 12 zeros
         
         foreach ($dashboardInfo['facturesDossier'] as $facturesDossier) {
-            $date = \DateTime::createFromFormat('d/m/Y', $facturesDossier->dateInsertion);
+            $date = $facturesDossier->dateInsertion;
             $monthIndex = (int) $date->format('n') - 1; // Get month index (0-11)
             
             if ($facturesDossier->etat_paiement == 'Oui') {
@@ -106,7 +106,7 @@ class DashboardRepository
         $unpaidNotesDebit = array_fill(0, 12, 0); // Initialize array with 12 zeros
         
         foreach ($dashboardInfo['noteDebitDossier'] as $noteDebitDossier) {
-            $date = \DateTime::createFromFormat('d/m/Y', $noteDebitDossier->dateinsertion);
+            $date = $noteDebitDossier->dateinsertion;
             $monthIndex = (int) $date->format('n') - 1; // Get month index (0-11)
             
             if ($noteDebitDossier->etat_paiement == 'Oui') {

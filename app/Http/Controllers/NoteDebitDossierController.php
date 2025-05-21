@@ -46,13 +46,8 @@ class NoteDebitDossierController extends AppBaseController
     {
         $dates = NoteDebitDossier::distinct()->pluck('datenotationdebit');
         $years = $dates->map(function ($date) {
-            $dateTime = \DateTime::createFromFormat('d/m/Y', $date);
-            if (!$dateTime) {
-                $dateTime = \DateTime::createFromFormat('d-m-Y', $date);
-            }
-            return $dateTime ? $dateTime->format('Y') : null;
+            return $date->year;
         });
-        $years = $years->filter()->unique()->values()->sortDesc();
 
         $currentDate = Carbon::now();
 
@@ -181,6 +176,13 @@ class NoteDebitDossierController extends AppBaseController
         $dossiers = Dossiers::findOrFail($id);
         $isEditMode = false;
 
+        // add num facturation 
+        $client = Clients::findOrFail($dossiers->client)->where('id', $dossiers->societe)->get();
+        $currentDate = Carbon::now('Africa/Casablanca');
+        $numNoteDebit = $client->count();       
+        $numNoteDebit += 1;
+        $nd = $numNoteDebit . '/' . $currentDate->year;
+
         $modePaiment = [
             '' => '',
             'Espèce' => 'Espèce',
@@ -196,7 +198,7 @@ class NoteDebitDossierController extends AppBaseController
             'USD' => 'USD (Dollar des Etats-Unis)'
         ];
 
-        return view('note_debit_dossiers.create', compact('modePaiment', 'a_payer', 'isEditMode'))->with('dossiers', $dossiers);
+        return view('note_debit_dossiers.create', compact('modePaiment', 'a_payer', 'isEditMode', 'nd'))->with('dossiers', $dossiers);
     }
 
     /**

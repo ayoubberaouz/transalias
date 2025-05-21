@@ -150,7 +150,7 @@
 <div class="form-group col-md-4 col-lg-4">
     {!! Form::label('numFacturation', 'N° Facture :') !!}
     @if(!$isEditMode)
-        {!! Form::text('numFacturation', null, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
+        {!! Form::text('numFacturation', $nf, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
     @else
         {!! Form::text('numFacturation', null, ['class' => 'form-control']) !!}
     @endif

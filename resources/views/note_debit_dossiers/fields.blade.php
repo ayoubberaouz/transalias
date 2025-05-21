@@ -150,7 +150,7 @@
 <div class="form-group col-md-3 col-lg-3">
     {!! Form::label('numnotedebit', 'N° Note de Débit :') !!}
     @if(!$isEditMode)
-        {!! Form::text('numnotedebit', null, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
+        {!! Form::text('numnotedebit', $nd, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
     @else
         {!! Form::text('numnotedebit', null, ['class' => 'form-control']) !!}
     @endif

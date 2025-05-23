@@ -17,7 +17,7 @@ class CreateHistoriqueTable extends Migration
         Schema::create('Historique', function (Blueprint $table) {
             $table->increments('id');
             $table->string('taches')->nullable();
-            $table->string('date')->nullable();
+            $table->date('date')->nullable();
             $table->string('ref')->nullable();
             $table->string('user')->nullable();
             $table->timestamps();

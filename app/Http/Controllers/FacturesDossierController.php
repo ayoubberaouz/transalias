@@ -44,17 +44,9 @@ class FacturesDossierController extends AppBaseController
     public function index(Request $request)
     {
         $dates = FacturesDossier::distinct()->pluck('dateFacturation');
-        // dd($dates);
-
         $years = $dates->map(function ($date) {
-            $dateTime = \DateTime::createFromFormat('d/m/Y', $date);
-            if (!$dateTime) {
-                $dateTime = \DateTime::createFromFormat('d-m-Y', $date);
-            }
-            return $dateTime ? $dateTime->format('Y') : null;
+            return $date->year;
         });
-
-        $years = $years->filter()->unique()->values()->sortDesc();
         
         $currentDate = Carbon::now();
 
@@ -183,6 +175,13 @@ class FacturesDossierController extends AppBaseController
         $dossiers = Dossiers::findOrFail($id);
         $isEditMode = false;
 
+        // add num facturation 
+        $client = Clients::findOrFail($dossiers->client)->where('id', $dossiers->societe)->get();
+        $currentDate = Carbon::now('Africa/Casablanca');
+        $numFacturation = $client->count();       
+        $numFacturation += 1;
+        $nf = $numFacturation . '/' . $currentDate->year;
+        
         $modePaiment = [
             '' => '',
             'Espèce' => 'Espèce',
@@ -198,7 +197,7 @@ class FacturesDossierController extends AppBaseController
             'USD' => 'USD (Dollar des Etats-Unis)'
         ];
 
-        return view('factures_dossiers.create', compact('modePaiment', 'a_payer', 'isEditMode'))->with('dossiers', $dossiers);
+        return view('factures_dossiers.create', compact('modePaiment', 'a_payer', 'isEditMode', 'nf'))->with('dossiers', $dossiers);
     }
 
     /**
@@ -239,8 +238,7 @@ class FacturesDossierController extends AppBaseController
         $input['etat_paiement'] = 'Non';
         $input['etat_validation'] = 0;
 
-        $formattedDate = $currentDate->format('d/m/Y');
-        $input['dateInsertion'] = $formattedDate;
+        $input['dateInsertion'] = $currentDate;
 
         $dossier->etat_facture = 1;
         $dossier->save();

@@ -130,7 +130,7 @@
 
         <!-- Main Footer -->
         <footer class="main-footer">
-            <strong>Copyright &copy; {{ date('Y') }} <a href="/">Trans</a>.</strong> Tous droits
+            <strong>Copyright &copy; {{ date('Y') }} <a href="/">Transalias</a>.</strong> Tous droits
             réservés.
         </footer>
     </div>

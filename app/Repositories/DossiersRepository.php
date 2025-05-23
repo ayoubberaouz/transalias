@@ -19,7 +19,6 @@ class DossiersRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'date_charg',
-        'heure_chargement',
         'lieu_livraison',
         'transporteur',
         'destinsation',

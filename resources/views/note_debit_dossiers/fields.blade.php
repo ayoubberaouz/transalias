@@ -150,7 +150,7 @@
 <div class="form-group col-md-3 col-lg-3">
     {!! Form::label('numnotedebit', 'N° Note de Débit :') !!}
     @if(!$isEditMode)
-        {!! Form::text('numnotedebit', null, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
+        {!! Form::text('numnotedebit', $nd, ['class' => 'form-control', 'disabled' => 'disabled']) !!}
     @else
         {!! Form::text('numnotedebit', null, ['class' => 'form-control']) !!}
     @endif
@@ -159,7 +159,7 @@
 <!-- Datenotationdebit Field -->
 <div class="form-group col-md-3 col-lg-3">
     {!! Form::label('datenotationdebit', 'Date de Note de Débit :') !!}
-    {!! Form::text('datenotationdebit', null, ['class' => 'form-control']) !!}
+    {!! Form::date('datenotationdebit', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Mod Paiement Field -->
@@ -172,7 +172,7 @@
 
 <!-- Montantdebit Field -->
 <div class="form-group col-md-3 col-lg-3">
-    {!! Form::label('montantdebit', 'Montant a payer pour le Débit ( en EURO ) :') !!}
+    {!! Form::label('montantdebit', 'Montant à payer ( en EURO ) :') !!}
     {!! Form::text('montantdebit', null, ['class' => 'form-control']) !!}
 </div>
 

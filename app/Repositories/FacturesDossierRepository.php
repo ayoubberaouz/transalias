@@ -20,7 +20,6 @@ class FacturesDossierRepository extends BaseRepository
     protected $fieldSearchable = [
         'numFacturation',
         'dateFacturation',
-        'heureFacturation',
         'dateInsertion',
         'a_facture',
         'mod_paiement',

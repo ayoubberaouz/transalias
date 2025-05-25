@@ -78,11 +78,6 @@ class NoteDebitDossierController extends AppBaseController
             $query->where('anneedossier.annee_dossier', 'like', '%' . $request->input('num') . '%');
         }
 
-        // Filter by transporteur
-        if ($request->filled('transporteur')) {
-            $query->where('dossiers.transporteur', 'like', '%' . $request->input('transporteur') . '%');
-        }
-
         // Filter by mat_remorque
         if ($request->filled('mat_remorque')) {
             $query->where('dossiers.mat_remorque', 'like', '%' . $request->input('mat_remorque') . '%');
@@ -128,11 +123,6 @@ class NoteDebitDossierController extends AppBaseController
         // Filter by num
         if ($request->filled('num')) {
             $query->where('anneedossier.annee_dossier', 'like', '%' . $request->input('num') . '%');
-        }
-
-        // Filter by transporteur
-        if ($request->filled('transporteur')) {
-            $query->where('dossiers.transporteur', 'like', '%' . $request->input('transporteur') . '%');
         }
 
         // Filter by mat_remorque

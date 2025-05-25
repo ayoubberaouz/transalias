@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12">
-                    <h4>Nouveau Transitaire Tanger</h4>
+                    <h4>Ajouter un transitaire tanger</h4>
                 </div>
             </div>
         </div>
@@ -25,10 +25,11 @@
                 </div>
             </div>
 
-            <div class="card-footer">
-                {!! Form::submit('Créer', ['class' => 'btn btn-primary']) !!}
+            <div class="card-footer float-right">
+                {!! Form::submit('Enregistrer', ['class' => 'btn btn-success']) !!}
                 <a href="{{ route('transitaireTangers.index') }}" class="btn btn-default">
-                 @lang('crud.cancel')
+                   <i class="fas fa-undo-alt"></i>
+                    Retour
                 </a>
             </div>
 

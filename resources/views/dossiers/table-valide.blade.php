@@ -1,7 +1,7 @@
 <div class="table-responsive table-striped">
     <table class="table" id="dossiers-table" style="font-size: 13px;">
         <thead>
-            <tr>
+            <tr class="table-user">
                 <th>N°</th>
                 <th>@lang('models/dossiers.fields.client')</th>
                 <th>Référence</th>
@@ -38,7 +38,7 @@
                     </td>
                     <td width="100">
                         <div class='btn-group'>
-                            <a href="{{ route('show-valide', [$dossiers->id]) }}" class='btn btn-primary p-2'
+                            <a href="{{ route('show-valide', [$dossiers->id]) }}" class='btn btn-outline-primary p-2'
                                 title="Détails">
                                 <i class="fas fa-check"></i>
                             </a>

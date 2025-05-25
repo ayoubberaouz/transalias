@@ -8,9 +8,10 @@
                     <h4>Liste des transitaires tanger</h4>
                 </div>
                 <div class="col-sm-6">
-                    <a class="btn btn-primary float-right"
+                    <a class="btn btn-success float-right"
                        href="{{ route('transitaireTangers.create') }}">
-                         @lang('crud.add_new')
+                       <i class="fas fa-plus"></i>
+                        Ajouter un transitaire tanger 
                     </a>
                 </div>
             </div>

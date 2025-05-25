@@ -5,12 +5,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h4>Roles</h4>
+                    <h4>Liste des rôles</h4>
                 </div>
                 <div class="col-sm-6">
-                    <a class="btn btn-primary float-right"
+                    <a class="btn btn-success float-right"
                        href="{{ route('roles.create') }}">
-                        Nouveau
+                        <i class="fas fa-plus"></i>
+                        Ajouter un rôle
                     </a>
                 </div>
             </div>

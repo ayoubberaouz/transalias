@@ -1,7 +1,7 @@
 <div class="table-responsive table-striped">
     <table class="table" id="clients-table">
         <thead>
-            <tr>
+            <tr class="table-user">
                 <th>Nom</th>
                 <th>Nom du contact</th>
                 <th>Référence</th>
@@ -34,13 +34,13 @@
                         @endif
                     </td>
                     <td>{{ $clients->nCompte }}</td>
-                    <td width="120">
-                        <div class='btn-group'>
-                            <a href="{{ route('clients.show', [$clients->id]) }}" class='btn btn-secondary p-2' title="Détails">
+                    <td>
+                        <div class=''>
+                            <a href="{{ route('clients.show', [$clients->id]) }}" class='btn btn-outline-secondary p-2' title="Détails">
                                 <i class="far fa-eye"></i>
                             </a>
-                            <a href="{{ route('clients.edit', [$clients->id]) }}" class='btn btn-warning text-white p-2' title="Modifier">
-                                <i class="far fa-edit"></i>
+                            <a href="{{ route('clients.edit', [$clients->id]) }}" class='btn btn-outline-warning p-2' title="Modifier">
+                                <i class="fas fa-edit"></i>
                             </a>
                         </div>
                     </td>

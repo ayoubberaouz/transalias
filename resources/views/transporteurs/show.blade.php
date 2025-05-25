@@ -6,12 +6,13 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h4>
-                        Détails Transporteur
+                        Détails d'un transporteur
                     </h4>
                 </div>
                 <div class="col-sm-6">
                     <a class="btn btn-default float-right" href="{{ route('transporteurs.index') }}">
-                        @lang('crud.back')
+                        <i class="fas fa-undo-alt"></i>
+                        Retour
                     </a>
                 </div>
             </div>

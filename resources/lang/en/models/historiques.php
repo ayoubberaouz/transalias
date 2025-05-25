@@ -2,7 +2,7 @@
 
 return array (
   'singular' => 'Historique',
-  'plural' => 'Historiques',
+  'plural' => 'Liste des historiques',
   'fields' => 
   array (
     'id' => 'Id',

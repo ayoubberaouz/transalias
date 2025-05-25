@@ -34,7 +34,7 @@
     $groupPermission = $allPermission->groupBy('module');
     @endphp
     <div class="permission">
-        {!! Form::label('permission', 'Permission:') !!}
+        {!! Form::label('permission', 'Permissions:') !!}
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             @foreach ( $groupPermission as $key=>$permissions)
 

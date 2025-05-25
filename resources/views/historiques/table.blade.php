@@ -1,7 +1,7 @@
 <div class="table-responsive table-striped">
     <table class="table" id="historiques-table">
         <thead>
-            <tr>
+            <tr class="table-user">
                 <th>Tache</th>
                 <th>@lang('models/historiques.fields.date')</th>
                 <th>@lang('models/historiques.fields.ref')</th>

@@ -11,7 +11,7 @@
 </div>
 <!-- Role Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('role', 'Role :') !!}
+    {!! Form::label('role', 'Rôle :') !!}
     <div class="select2-purple">
         {!! Form::select('role_data[]', $roles, null, [
             'class' => 'select2 form-control select2-purple',

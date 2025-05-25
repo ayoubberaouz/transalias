@@ -1,7 +1,7 @@
 <div class="table-responsive table-striped">
     <table class="table" id="noteDebitDossiers-table">
         <thead>
-            <tr>
+            <tr class="table-user">
                 <th>Société</th>
                 <th>N° Note de Débit</th>
                 <th>N° Dossier</th>

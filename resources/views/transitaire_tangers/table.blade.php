@@ -1,7 +1,7 @@
 <div class="table-responsive table-striped">
     <table class="table" id="transitaireTangers-table">
         <thead>
-            <tr>
+            <tr class="table-user">
                 <th>@lang('models/transporteurs.fields.nom')</th>
                 <th>Téléphone</th>
                 <th>@lang('models/transporteurs.fields.fax')</th>
@@ -25,14 +25,14 @@
                     <td>{{ $transitaireTanger->ville }}</td>
                     <td>{{ $transitaireTanger->Ncompte }}</td>
                     <td width="120">
-                        <div class='btn-group'>
+                        <div class=''>
                             <a href="{{ route('transitaireTangers.show', [$transitaireTanger->id]) }}" title="Détails"
-                                class='btn btn-secondary p-2'>
+                                class='btn btn-outline-secondary p-2'>
                                 <i class="far fa-eye"></i>
                             </a>
                             <a href="{{ route('transitaireTangers.edit', [$transitaireTanger->id]) }}" title="Modifier"
-                                class='btn btn-warning text-white p-2'>
-                                <i class="far fa-edit"></i>
+                                class='btn btn-outline-warning p-2'>
+                                <i class="fas fa-edit"></i>
                             </a>
                         </div>
                     </td>

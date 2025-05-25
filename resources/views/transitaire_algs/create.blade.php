@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12">
-                    <h4>Nouveau Transitaire ALG</h4>
+                    <h4>Ajouter un transitaire alg</h4>
                 </div>
             </div>
         </div>
@@ -25,11 +25,11 @@
                 </div>
             </div>
 
-            <div class="card-footer">
-                {!! Form::submit('Créer', ['class' => 'btn btn-primary']) !!}
+            <div class="card-footer float-right">
+                {!! Form::submit('Enregistrer', ['class' => 'btn btn-success']) !!}
                 <a href="{{ route('transitaireAlgs.index') }}" class="btn btn-default">
-                 @lang('crud.cancel')
-                </a>
+                    <i class="fas fa-undo-alt"></i>
+                    Retour </a>
             </div>
 
             {!! Form::close() !!}

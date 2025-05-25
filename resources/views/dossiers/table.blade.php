@@ -1,7 +1,7 @@
 <div class="table-responsive table-striped">
     <table class="table" id="dossiers-table" style="font-size: 13px;">
         <thead>
-            <tr>
+            <tr class="table-user">
                 <th>N°</th>
                 <th>@lang('models/dossiers.fields.client')</th>
                 <th>Référence</th>
@@ -28,29 +28,29 @@
                     <td>{{ $dossiers->destinsation }}</td>
                     <td width="100">
                         {!! Form::open(['route' => ['dossiers.update-etat', $dossiers->id], 'method' => 'PUT']) !!}
-                        <div class='btn-group'>
+                        <div class=''>
                             {{-- <a href="{{ route('dossiers.show', [$dossiers->id]) }}" class='btn btn-secondary p-2'
                                 title="Détails">
                                 <i class="far fa-eye"></i>
                             </a> --}}
                             <a href="{{ route('dossiers.edit', [$dossiers->id]) }}"
-                                class='btn btn-warning text-white p-2' title="Modifier">
-                                <i class="far fa-edit"></i>
+                                class='btn btn-outline-warning' title="Modifier">
+                                <i class="fas fa-edit"></i>
                             </a>
                             @if ($dossiers->etat_cloture == 0)
-                                {!! Form::button('<i class="fa fa-lock"></i>', [
+                                {!! Form::button('<i class="fas fa-lock"></i>', [
                                     'type' => 'submit',
-                                    'class' => 'btn btn-danger p-2',
+                                    'class' => 'btn btn-danger',
                                     'title' => 'Clôturé',
                                     'onclick' => "return confirm('Etes-vous sûr de vouloir clôturer cette opération avec facturation ?')",
                                 ]) !!}
                             @elseif ($dossiers->etat_cloture == 1)
-                                {!! Form::button('<i class="fa fa-lock"></i>', [
-                                    'class' => 'btn btn-success p-2',
+                                {!! Form::button('<i class="fas fa-lock"></i>', [
+                                    'class' => 'btn btn-success',
                                     'title' => 'Déja Clôturé',
                                 ]) !!}
                             @endif
-                            <a href="{{ route('dossiers.show-uploads', [$dossiers->id]) }}" class='btn btn-secondary text-white p-2'
+                            <a href="{{ route('dossiers.show-uploads', [$dossiers->id]) }}" class='btn btn-secondary text-white'
                                 title="Joindre des fichiers">
                                 <i class="fas fa-paperclip"></i>
                             </a>

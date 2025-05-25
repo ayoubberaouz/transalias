@@ -1,7 +1,7 @@
 <div class="table-responsive table-striped">
     <table class="table" id="dossiers-table" style="font-size: 12px;">
         <thead>
-            <tr>
+            <tr class="table-user">
                 <th>N°</th>
                 <th>@lang('models/dossiers.fields.client')</th>
                 <th>Référence</th>

@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>@lang('models/transitaireTangers.singular')</h1>
+                    <h1>Détails d'un transtaitire tanger </h1>
                 </div>
                 <div class="col-sm-6">
-                    <a class="btn btn-default float-right"
-                       href="{{ route('transitaireTangers.index') }}">
-                         @lang('crud.back')
+                    <a class="btn btn-default float-right" href="{{ route('transitaireTangers.index') }}">
+                        <i class="fas fa-undo-alt"></i>
+                        Retour
                     </a>
                 </div>
             </div>

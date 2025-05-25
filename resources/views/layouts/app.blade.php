@@ -6,6 +6,8 @@
     <title>{{ config('app.name') }}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
+    <link rel="stylesheet" href="{{ url('css/style.css') }}">
+
     <link rel="icon" type="image/x-icon" href="{{ url('images/transalias_logo_bg.png') }}" />
 
     <!-- Font Awesome -->

@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-sm-6">
                     <a class="btn btn-default float-right" href="{{ route('dossiers.index') }}">
-                        @lang('crud.back')
+                        <i class="fas fa-undo-alt"></i> Retour
                     </a>
                 </div>
             </div>
@@ -44,8 +44,8 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" onclick="return confirm('Vous êtes sur ?')"
-                                                        class="btn btn-danger btn-sm">
-                                                        <i class="fa fa-trash-alt"></i>
+                                                        class="btn btn-outline-danger btn-sm">
+                                                        <i class="far fa-trash-alt"></i>
                                                     </button>
                                                 </form>
                                             </div>
@@ -66,7 +66,7 @@
                             @csrf
                             <input type="hidden" name="id_dossier" value="{{ $dossier->id }}">
                             <input type="file" name="files[]" multiple>
-                            <button type="submit" class="btn btn-primary mt-2">Charger</button>
+                            <button type="submit" class="btn btn-success">Charger</button>
                         </form>
                     </div>
                 </div>

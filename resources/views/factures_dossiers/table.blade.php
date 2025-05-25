@@ -1,7 +1,7 @@
 <div class="table-responsive table-striped">
     <table class="table" id="facturesDossiers-table">
         <thead>
-            <tr>
+            <tr class="table-user">
                 <th>Société</th>
                 <th>N° Facture</th>
                 <th>N° Dossier</th>

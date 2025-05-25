@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h4>Mise à Jour Role</h4>
+                    <h4>Modifier un rôle</h4>
                 </div>
             </div>
         </div>
@@ -25,9 +25,11 @@
                 </div>
             </div>
 
-            <div class="card-footer">
-                {!! Form::submit('Modifier', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('roles.index') }}" class="btn btn-default">Annuler</a>
+            <div class="card-footer float-right">
+                {!! Form::submit('Enregistrer', ['class' => 'btn btn-success']) !!}
+                <a href="{{ route('roles.index') }}" class="btn btn-default">
+                    <i class="fas fa-undo-alt"></i>
+                    Retour</a>
             </div>
 
             {!! Form::close() !!}

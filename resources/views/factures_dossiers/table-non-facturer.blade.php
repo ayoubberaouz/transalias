@@ -1,7 +1,7 @@
 <div class="table-responsive table-striped">
     <table class="table" id="dossiers-table">
         <thead>
-            <tr>
+            <tr class="table-user">
                 <th>Société</th>
                 <th>Client</th>
                 <th>N° Dossier</th>

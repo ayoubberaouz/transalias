@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h4>
-                        Mise à Jour Dossier
+                        Modifier un dossier
                     </h4>
                 </div>
             </div>
@@ -27,10 +27,11 @@
                 </div>
             </div>
 
-            <div class="card-footer">
-                {!! Form::submit('Modifier', ['class' => 'btn btn-primary']) !!}
+            <div class="card-footer float-right">
+                {!! Form::submit('Enregistrer', ['class' => 'btn btn-success']) !!}
                 <a href="{{ route('dossiers.index') }}" class="btn btn-default">
-                    @lang('crud.cancel')
+                    <i class="fas fa-undo-alt"></i>
+                    Retour
                 </a>
             </div>
 

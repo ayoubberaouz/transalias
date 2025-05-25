@@ -5,11 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h4>Utilisateurs</h4>
+                    <h4>Liste des utilisateurs</h4>
                 </div>
                 <div class="col-sm-6">
-                    <a class="btn btn-primary float-right" href="{{ route('users.create') }}">
-                        Nouveau
+                    <a class="btn btn-success float-right" href="{{ route('users.create') }}">
+                        <i class="fas fa-plus"></i>
+                        Ajouter un utilisateur
                     </a>
                 </div>
             </div>

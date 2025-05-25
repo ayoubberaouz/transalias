@@ -10,17 +10,17 @@
                 <div class="col-md-6">
                     <form method="GET" action="{{ route('export-dossiers-clotures') }}">
                         <div class="row">
-                            <div class="col-md-8 mt-2 text-right">
+                            <div class="col-md-6 mt-2 text-right">
                                 <label for="client">Date Dossiers Clotûrés : </label>
                             </div>
-                            <div class="col-md-2 mb-2">
+                            <div class="col-md-3 mb-2">
                                 <select class="form-control custom-select" name="year-export" id="year-export">
                                     @foreach ($years as $year)
                                         <option value={{ $year }}>{{ $year }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <button type="submit" class='btn btn-success text-white float-right'>
                                     <i class="far fa-file-excel"></i> Exporter
                                 </button>

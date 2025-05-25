@@ -8,8 +8,9 @@
                     <h4>Liste des clients</h4>
                 </div>
                 <div class="col-sm-6">
-                    <a class="btn btn-primary float-right" href="{{ route('clients.create') }}">
-                        @lang('crud.add_new')
+                    <a class="btn btn-success float-right" href="{{ route('clients.create') }}">
+                        <i class="fas fa-plus"></i>
+                        Ajouter un client 
                     </a>
                 </div>
             </div>

@@ -8,8 +8,9 @@
                     <h4>Liste des transporteurs</h4>
                 </div>
                 <div class="col-sm-6">
-                    <a class="btn btn-primary float-right" href="{{ route('transporteurs.create') }}">
-                        @lang('crud.add_new')
+                    <a class="btn btn-success float-right" href="{{ route('transporteurs.create') }}">
+                        <i class="fas fa-plus"></i>
+                        Ajouter un transporteur
                     </a>
                 </div>
             </div>

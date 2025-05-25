@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>@lang('models/transitaireAlgs.singular')</h1>
+                    <h1>Détails d'un transitaire alg</h1>
                 </div>
                 <div class="col-sm-6">
-                    <a class="btn btn-default float-right"
-                       href="{{ route('transitaireAlgs.index') }}">
-                         @lang('crud.back')
+                    <a class="btn btn-default float-right" href="{{ route('transitaireAlgs.index') }}">
+                        <i class="fas fa-undo-alt"></i>
+                        Retour
                     </a>
                 </div>
             </div>

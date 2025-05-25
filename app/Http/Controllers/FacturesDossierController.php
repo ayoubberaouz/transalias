@@ -47,7 +47,7 @@ class FacturesDossierController extends AppBaseController
         $years = $dates->map(function ($date) {
             return $date->year;
         });
-        
+
         $currentDate = Carbon::now();
 
         $query = FacturesDossier::join('dossiers', 'FacturesDossier.iddossier', '=', 'dossiers.id')->join('Clients', 'dossiers.client', '=', 'Clients.id')
@@ -56,16 +56,14 @@ class FacturesDossierController extends AppBaseController
         // Filter by year
         if ($request->filled('year')) {
             $query->where('FacturesDossier.dateFacturation', 'like', '%' . $request->input('year') . '%');
-        }
-        else{
+        } else {
             $query->where('FacturesDossier.dateFacturation', 'like', '%' . $currentDate->year . '%');
         }
 
         // Filter by societe
         if ($request->filled('societe')) {
             $query->where('Clients.societe', $request->input('societe'));
-        }
-        else{
+        } else {
             $query->where('Clients.societe', 1);
         }
 
@@ -108,9 +106,9 @@ class FacturesDossierController extends AppBaseController
                 'dossiers.*',
                 'Clients.societe as selectedSociete',
                 'anneedossier.*'
-            ])->paginate(20)->appends($request->except('page')); // Append query parameters to pagination links
+            ])->paginate(5)->appends($request->except('page')); // Append query parameters to pagination links
 
-        $clients = Clients::all(); 
+        $clients = Clients::all();
         $clientsOptions = ['' => ''] + $clients->pluck('nom', 'id')->toArray();
 
         return view('factures_dossiers.index', compact('clientsOptions', 'years'))
@@ -150,10 +148,10 @@ class FacturesDossierController extends AppBaseController
         $dossiers = $query->where('dossiers.etat_cloture', 1)
             ->where('dossiers.etat_facture', 0)
             ->orderBy('dossiers.id', 'desc')
-            ->paginate(20)
+            ->paginate(5)
             ->appends($request->except('page')); // Append query parameters to pagination links
-        
-        $clients = Clients::all(); 
+
+        $clients = Clients::all();
         $clientsOptions = ['' => ''] + $clients->pluck('nom', 'id')->toArray();
 
         return view('factures_dossiers.index-non-facturer', compact('clientsOptions'))
@@ -178,10 +176,10 @@ class FacturesDossierController extends AppBaseController
         // add num facturation 
         $client = Clients::findOrFail($dossiers->client)->where('id', $dossiers->societe)->get();
         $currentDate = Carbon::now('Africa/Casablanca');
-        $numFacturation = $client->count();       
+        $numFacturation = $client->count();
         $numFacturation += 1;
         $nf = $numFacturation . '/' . $currentDate->year;
-        
+
         $modePaiment = [
             '' => '',
             'Espèce' => 'Espèce',
@@ -189,7 +187,7 @@ class FacturesDossierController extends AppBaseController
             'Virement' => 'Virement',
             'Autres' => 'Autres'
         ];
-        
+
         $a_payer = [
             '' => '',
             'MAD' => 'MAD (Dirham marocain)',
@@ -221,7 +219,7 @@ class FacturesDossierController extends AppBaseController
     public function storeFacture(CreateFacturesDossierRequest $request, $id)
     {
         $input = $request->all();
-        
+
         $dossier = Dossiers::findOrFail($id);
         $client = Clients::findOrFail($dossier->client);
 
@@ -230,7 +228,7 @@ class FacturesDossierController extends AppBaseController
         // add num facturation 
         $currentDate = Carbon::now('Africa/Casablanca');
         $nb = $query->where('Clients.societe', $client->societe)->get();
-        $numFacturation = $nb->count();        
+        $numFacturation = $nb->count();
         $numFacturation += 1;
 
         $input['numFacturation'] = $numFacturation . '/' . $currentDate->year;
@@ -301,7 +299,7 @@ class FacturesDossierController extends AppBaseController
             'Virement' => 'Virement',
             'Autres' => 'Autres'
         ];
-        
+
         $a_payer = [
             '' => '',
             'MAD' => 'MAD (Dirham marocain)',
@@ -379,7 +377,7 @@ class FacturesDossierController extends AppBaseController
 
         return redirect(route('facturesDossiers.index'));
     }
-    
+
     public function updatePaiement($id)
     {
         $facturesDossier = $this->facturesDossierRepository->find($id);
@@ -391,7 +389,7 @@ class FacturesDossierController extends AppBaseController
 
         return redirect()->route('facturesDossiers.index', request()->query());
     }
-    
+
     public function updateValidation($id)
     {
         $facturesDossier = $this->facturesDossierRepository->find($id);
@@ -413,7 +411,7 @@ class FacturesDossierController extends AppBaseController
             $facturer3 = (float)($facturesDossier->facturer3 ?? 0);
             $facturer4 = (float)($facturesDossier->facturer4 ?? 0);
             $facturer5 = (float)($facturesDossier->facturer5 ?? 0);
-        
+
             $total_ht = $facturer1 + $facturer2 + $facturer3 + $facturer4 + $facturer5;
         } else {
             $total_ht = 0; // or handle the null case as needed
@@ -431,21 +429,19 @@ class FacturesDossierController extends AppBaseController
         $fractionalPartInWords = $numberTransformer->toWords($fractionalPart);
 
         // Combine the parts
-        if($facturesDossier->a_paye == "MAD"){
+        if ($facturesDossier->a_paye == "MAD") {
             if ($fractionalPart > 0) {
                 $numberInWords = strtoupper($integerPartInWords . ' DIRHAMS ET ' . $fractionalPartInWords . ' CENTIMES');
             } else {
                 $numberInWords = strtoupper($integerPartInWords . ' DIRHAMS');
             }
-        }
-        else if($facturesDossier->a_paye == "EUR"){
+        } else if ($facturesDossier->a_paye == "EUR") {
             if ($fractionalPart > 0) {
                 $numberInWords = strtoupper($integerPartInWords . ' EUROS ET ' . $fractionalPartInWords . ' CENTIMES');
             } else {
                 $numberInWords = strtoupper($integerPartInWords . ' EUROS');
             }
-        }
-        else if($facturesDossier->a_paye == "USD"){
+        } else if ($facturesDossier->a_paye == "USD") {
             if ($fractionalPart > 0) {
                 $numberInWords = strtoupper($integerPartInWords . ' DOLLARS ET ' . $fractionalPartInWords . ' CENTS');
             } else {
@@ -488,12 +484,12 @@ class FacturesDossierController extends AppBaseController
 
         return $pdf->download($fileName);
     }
-    
+
     public function export(Request $request)
     {
         $year = $request->input('year-export', Carbon::now()->year);
         $societe = $request->input('societe-export');
-        
+
         return Excel::download(new FacturesExport($year, $societe), 'liste-factures.xlsx');
     }
 }

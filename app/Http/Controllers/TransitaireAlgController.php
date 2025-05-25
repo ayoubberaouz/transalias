@@ -38,11 +38,10 @@ class TransitaireAlgController extends AppBaseController
     {
         if ($request->filled('nom')) {
             $nom = $request->input('nom');
-            
-            $transitaireAlgs = TransitaireAlg::where('nom', 'like' , '%'.$nom.'%')->orderBy('id', 'desc')->paginate(20);
-        }
-        else{
-            $transitaireAlgs = TransitaireAlg::orderBy('id', 'desc')->paginate(20);
+
+            $transitaireAlgs = TransitaireAlg::where('nom', 'like', '%' . $nom . '%')->orderBy('id', 'desc')->paginate(5);
+        } else {
+            $transitaireAlgs = TransitaireAlg::orderBy('id', 'desc')->paginate(5);
         }
 
         return view('transitaire_algs.index')

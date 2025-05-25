@@ -38,11 +38,10 @@ class TransitaireTangerController extends AppBaseController
     {
         if ($request->filled('nom')) {
             $nom = $request->input('nom');
-            
-            $transitaireTangers = TransitaireTanger::where('nom', 'like' , '%'.$nom.'%')->orderBy('id', 'desc')->paginate(20);
-        }
-        else{
-            $transitaireTangers = TransitaireTanger::orderBy('id', 'desc')->paginate(20);
+
+            $transitaireTangers = TransitaireTanger::where('nom', 'like', '%' . $nom . '%')->orderBy('id', 'desc')->paginate(5);
+        } else {
+            $transitaireTangers = TransitaireTanger::orderBy('id', 'desc')->paginate(5);
         }
 
         return view('transitaire_tangers.index')

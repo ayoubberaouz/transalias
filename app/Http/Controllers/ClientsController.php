@@ -38,11 +38,10 @@ class ClientsController extends AppBaseController
     {
         if ($request->filled('nom')) {
             $nom = $request->input('nom');
-            
-            $clients = Clients::where('nom', 'like' , '%'.$nom.'%')->orderBy('id', 'desc')->paginate(20);
-        }
-        else{
-            $clients = Clients::orderBy('id', 'desc')->paginate(20);
+
+            $clients = Clients::where('nom', 'like', '%' . $nom . '%')->orderBy('id', 'desc')->paginate(5);
+        } else {
+            $clients = Clients::orderBy('id', 'desc')->paginate(5);
         }
 
         return view('clients.index')
@@ -190,7 +189,8 @@ class ClientsController extends AppBaseController
         return redirect(route('clients.index'));
     }
 
-    public function getClientsBySociete($societeId){
+    public function getClientsBySociete($societeId)
+    {
         $clients = Clients::where('societe', $societeId)->pluck('nom', 'id');
         return response()->json($clients);
     }

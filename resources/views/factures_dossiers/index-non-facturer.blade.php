@@ -14,16 +14,12 @@
                     <div class="col-sm-12">
                         <div class="row">
                             <div class="col-md-2 mb-1">
-                                <label for="client">Cilent : </label>
-                                {!! Form::select('client', $clientsOptions, null, ['class' => 'form-control custom-select']) !!}
-                            </div>
-                            <div class="col-md-2 mb-1">
                                 <label for="num">N° Dossier : </label>
                                 <input type="text" class="form-control" id="num" name="num">
                             </div>
                             <div class="col-md-2 mb-1">
-                                <label for="transporteur">Transporteur : </label>
-                                <input type="text" class="form-control" id="transporteur" name="transporteur">
+                                <label for="client">Cilent : </label>
+                                {!! Form::select('client', $clientsOptions, null, ['class' => 'form-control custom-select']) !!}
                             </div>
                             <div class="col-md-2 mb-1">
                                 <label for="mat_remorque">Matricule Remorque : </label>
@@ -68,7 +64,6 @@
     window.onload = function() {
         const urlParams = new URLSearchParams(window.location.search);
         const numParam = urlParams.get('num');
-        const transporteurParam = urlParams.get('transporteur');
         const matRemorqueParam = urlParams.get('mat_remorque');
         const matTracteurParam = urlParams.get('mat_tracteur');
         const referenceParam = urlParams.get('reference');
@@ -76,7 +71,6 @@
         const yearParam = urlParams.get('year');
 
         document.getElementById("num").value = numParam || '';
-        document.getElementById("transporteur").value = transporteurParam || '';
         document.getElementById("mat_remorque").value = matRemorqueParam || '';
         document.getElementById("mat_tracteur").value = matTracteurParam || '';
         document.getElementById("reference").value = referenceParam || '';

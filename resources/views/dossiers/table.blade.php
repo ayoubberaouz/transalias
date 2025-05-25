@@ -26,39 +26,39 @@
                     <td>{{ $dossiers->mat_tracteur }}</td>
                     <td>{{ $dossiers->expediteur }}</td>
                     <td>{{ $dossiers->destinsation }}</td>
-                    <td>
-                        <div class=''>
+                    <td width="200">
+                        <div class="action-buttons d-flex flex-wrap gap-2">
                             {{-- <a href="{{ route('dossiers.show', [$dossiers->id]) }}" class='btn btn-secondary p-2'
                                 title="Détails">
                                 <i class="far fa-eye"></i>
                             </a> --}}
                             {!! Form::open(['route' => ['dossiers.update-etat', $dossiers->id], 'method' => 'PUT']) !!}
-                            <a href="{{ route('dossiers.edit', [$dossiers->id]) }}" class='btn btn-outline-warning'
+                            <a href="{{ route('dossiers.edit', [$dossiers->id]) }}" class='btn btn-outline-warning px-2 py-1'
                                 title="Modifier">
                                 <i class="fas fa-edit"></i>
                             </a>
                             @if ($dossiers->etat_cloture == 0)
                                 {!! Form::button('<i class="fas fa-lock"></i>', [
                                     'type' => 'submit',
-                                    'class' => 'btn btn-danger',
+                                    'class' => 'btn btn-outline-danger px-2 py-1',
                                     'title' => 'Clôturé',
                                     'onclick' => "return confirm('Etes-vous sûr de vouloir clôturer cette opération avec facturation ?')",
                                 ]) !!}
                             @elseif ($dossiers->etat_cloture == 1)
                                 {!! Form::button('<i class="fas fa-lock"></i>', [
-                                    'class' => 'btn btn-success',
+                                    'class' => 'btn btn-outline-success px-2 py-1',
                                     'title' => 'Déja Clôturé',
                                 ]) !!}
                             @endif
                             {!! Form::close() !!}
                             <a href="{{ route('dossiers.show-uploads', [$dossiers->id]) }}"
-                                class='btn btn-secondary text-white' title="Joindre des fichiers">
+                                class='btn btn-outline-secondary px-2 py-1' title="Joindre des fichiers">
                                 <i class="fas fa-paperclip"></i>
                             </a>
                             {!! Form::open(['route' => ['dossiers.destroy', $dossiers->id], 'method' => 'delete']) !!}
                             {!! Form::button('<i class="far fa-trash-alt"></i>', [
                                 'type' => 'submit',
-                                'class' => 'btn btn-outline-danger px-3 py-2',
+                                'class' => 'btn btn-outline-danger px-2 py-1',
                                 'onclick' => "return confirm('Vous êtes sur ?')",
                                 'title' => 'Supprimer',
                             ]) !!}

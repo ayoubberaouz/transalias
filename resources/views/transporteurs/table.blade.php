@@ -27,11 +27,11 @@
                     <td width="120">
                         <div class=''>
                             <a href="{{ route('transporteurs.show', [$transporteur->id]) }}" title="Détails"
-                                class='btn btn-outline-secondary p-2'>
+                                class='btn btn-outline-secondary px-2 py-1'>
                                 <i class="far fa-eye"></i>
                             </a>
                             <a href="{{ route('transporteurs.edit', [$transporteur->id]) }}" title="Modifier"
-                                class='btn btn-outline-warning  p-2'>
+                                class='btn btn-outline-warning px-2 py-1'>
                                 <i class="fas fa-edit"></i>
                             </a>
                             {!! Form::open(['route' => ['transporteurs.destroy', $transporteur->id], 'method' => 'delete']) !!}

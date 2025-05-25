@@ -1,5 +1,5 @@
 .main-sidebar {
-    background-color: #344fa1; 
+    background-color: #344fa1;
 }
 
 .nav-pill .nav-link {
@@ -11,10 +11,23 @@
     color: white;
 }
 
-.content-wrapper{
+.content-wrapper {
     background-color: white !important;
 }
 
-.card-footer{
+.card-footer {
     background-color: transparent !important;
+}
+
+.swal-title-dark {
+    color: #000 !important;
+}
+
+.action-buttons > * {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.action-buttons .btn i {
+    pointer-events: none;
 }

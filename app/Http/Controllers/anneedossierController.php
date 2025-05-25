@@ -29,7 +29,7 @@ class anneedossierController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $anneedossiers = $this->anneedossierRepository->paginate(20);
+        $anneedossiers = $this->anneedossierRepository->paginate(5);
 
         return view('anneedossiers.index')
             ->with('anneedossiers', $anneedossiers);

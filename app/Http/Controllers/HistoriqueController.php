@@ -30,7 +30,7 @@ class HistoriqueController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $historiques = Historique::orderBy('id', 'desc')->paginate(20);
+        $historiques = Historique::orderBy('id', 'desc')->paginate(5);
 
         return view('historiques.index')
             ->with('historiques', $historiques);

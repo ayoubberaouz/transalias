@@ -61,8 +61,7 @@ class DossiersController extends AppBaseController
         // Filter by year
         if ($request->filled('year')) {
             $query->where('anneedossier.annee', $request->input('year'));
-        }
-        else{
+        } else {
             $query->where('anneedossier.annee', $currentDate->year);
         }
 
@@ -85,7 +84,7 @@ class DossiersController extends AppBaseController
         if ($request->filled('transporteur')) {
             $query->where('dossiers.transporteur', 'like', '%' . $request->input('transporteur') . '%');
         }
-        
+
         // Filter by mat_remorque
         if ($request->filled('mat_remorque')) {
             $query->where('dossiers.mat_remorque', 'like', '%' . $request->input('mat_remorque') . '%');
@@ -94,15 +93,26 @@ class DossiersController extends AppBaseController
         // Filter by mat_tracteur
         if ($request->filled('mat_tracteur')) {
             $query->where('dossiers.mat_tracteur', 'like', '%' . $request->input('mat_tracteur') . '%');
-        }      
+        }
 
         // Finally, paginate the results
         $dossiers = $query->orderBy('dossiers.id', 'desc')
-            ->select('dossiers.id', 'dossiers.client', 'dossiers.reference', 'dossiers.etat_cloture', 'dossiers.transporteur', 'dossiers.date_charg',
-                'dossiers.mat_remorque', 'dossiers.mat_tracteur', 'dossiers.expediteur', 'dossiers.destinsation', 'anneedossier.annee_dossier')
-            ->paginate(20)->appends($request->except('page')); // Append query parameters to pagination links
- 
-        $clients = Clients::all(); 
+            ->select(
+                'dossiers.id',
+                'dossiers.client',
+                'dossiers.reference',
+                'dossiers.etat_cloture',
+                'dossiers.transporteur',
+                'dossiers.date_charg',
+                'dossiers.mat_remorque',
+                'dossiers.mat_tracteur',
+                'dossiers.expediteur',
+                'dossiers.destinsation',
+                'anneedossier.annee_dossier'
+            )
+            ->paginate(5)->appends($request->except('page')); // Append query parameters to pagination links
+
+        $clients = Clients::all();
         $clientsOptions = ['' => ''] + $clients->pluck('nom', 'id')->toArray();
 
         return view('dossiers.index', compact('clientsOptions', 'years'))->with('dossiers', $dossiers);
@@ -118,8 +128,7 @@ class DossiersController extends AppBaseController
         // Filter by year
         if ($request->filled('year')) {
             $query->where('anneedossier.annee', $request->input('year'));
-        }
-        else{
+        } else {
             $query->where('anneedossier.annee', $currentDate->year);
         }
 
@@ -150,15 +159,26 @@ class DossiersController extends AppBaseController
 
         // Finally, paginate the results
         $dossiers = $query->where('dossiers.etat_cloture', 1)->orderBy('dossiers.id', 'desc')
-            ->select('dossiers.id', 'dossiers.client', 'dossiers.reference', 'dossiers.etat_cloture', 'dossiers.date_charg',
-                'dossiers.mat_remorque', 'dossiers.mat_tracteur', 'anneedossier.annee_dossier', 'anneedossier.iddossier', 'dossiers.etat_facture', 'dossiers.etat_notedebit')
-            ->paginate(20)->appends($request->except('page')); // Append query parameters to pagination links
+            ->select(
+                'dossiers.id',
+                'dossiers.client',
+                'dossiers.reference',
+                'dossiers.etat_cloture',
+                'dossiers.date_charg',
+                'dossiers.mat_remorque',
+                'dossiers.mat_tracteur',
+                'anneedossier.annee_dossier',
+                'anneedossier.iddossier',
+                'dossiers.etat_facture',
+                'dossiers.etat_notedebit'
+            )
+            ->paginate(5)->appends($request->except('page')); // Append query parameters to pagination links
 
         // Get num_facture
         $facturesDossier = FacturesDossier::orderBy('id', 'desc')->select('id', 'iddossier', 'etat_validation', 'numFacturation')->get();
         foreach ($facturesDossier as $f) {
             foreach ($dossiers as $d) {
-                if($f->iddossier == $d->iddossier){
+                if ($f->iddossier == $d->iddossier) {
                     $d->num_facture = $f->numFacturation;
                     $d->id_facture = $f->id;
                     $d->etat_validation_facture = $f->etat_validation;
@@ -170,7 +190,7 @@ class DossiersController extends AppBaseController
         $noteDebitDossier = NoteDebitDossier::orderBy('id', 'desc')->select('id', 'iddossier', 'etat_validation', 'numnotedebit')->get();
         foreach ($noteDebitDossier as $n) {
             foreach ($dossiers as $d) {
-                if($n->iddossier == $d->iddossier){
+                if ($n->iddossier == $d->iddossier) {
                     $d->num_note_debit = $n->numnotedebit;
                     $d->id_note_debit = $n->id;
                     $d->etat_validation_note = $n->etat_validation;
@@ -178,7 +198,7 @@ class DossiersController extends AppBaseController
             }
         }
 
-        $clients = Clients::all(); 
+        $clients = Clients::all();
         $clientsOptions = ['' => ''] + $clients->pluck('nom', 'id')->toArray();
 
         return view('dossiers.index-cloture', compact('clientsOptions', 'years'))->with('dossiers', $dossiers);
@@ -194,8 +214,7 @@ class DossiersController extends AppBaseController
         // Filter by year
         if ($request->filled('year')) {
             $query->where('anneedossier.annee', $request->input('year'));
-        }
-        else{
+        } else {
             $query->where('anneedossier.annee', $currentDate->year);
         }
 
@@ -206,10 +225,21 @@ class DossiersController extends AppBaseController
 
         // Finally, paginate the results
         $dossiers = $query->orderBy('dossiers.id', 'desc')
-            ->select('dossiers.id', 'dossiers.client', 'dossiers.reference', 'dossiers.etat_cloture', 'dossiers.transporteur', 'dossiers.date_charg',
-                'dossiers.mat_remorque', 'dossiers.mat_tracteur', 'dossiers.expediteur', 'dossiers.destinsation',
-                'anneedossier.annee_dossier', 'dossiers.etat_validation')
-            ->paginate(20)->appends($request->except('page')); // Append query parameters to pagination links
+            ->select(
+                'dossiers.id',
+                'dossiers.client',
+                'dossiers.reference',
+                'dossiers.etat_cloture',
+                'dossiers.transporteur',
+                'dossiers.date_charg',
+                'dossiers.mat_remorque',
+                'dossiers.mat_tracteur',
+                'dossiers.expediteur',
+                'dossiers.destinsation',
+                'anneedossier.annee_dossier',
+                'dossiers.etat_validation'
+            )
+            ->paginate(5)->appends($request->except('page')); // Append query parameters to pagination links
 
         return view('dossiers.index-valide', compact('years'))->with('dossiers', $dossiers);
     }
@@ -242,9 +272,9 @@ class DossiersController extends AppBaseController
     public function store(CreateDossiersRequest $request)
     {
         $input = $request->all();
-        
+
         $currentDate = Carbon::now('Africa/Casablanca');
-        
+
         $input['etat_cloture'] = 0;
         $input['etat_facture'] = 0;
         $input['etat_notedebit'] = 0;
@@ -393,7 +423,7 @@ class DossiersController extends AppBaseController
     public function updateEtat($id)
     {
         $dossier = Dossiers::findOrFail($id);
-        
+
         $dossier->etat_cloture = 1;
         $dossier->save();
 
@@ -401,11 +431,11 @@ class DossiersController extends AppBaseController
 
         return redirect()->route('dossiers.index');
     }
-    
+
     public function export(Request $request)
     {
         $year = $request->input('year-export', Carbon::now()->year);
-        
+
         return Excel::download(new DossiersExport($year), 'liste-dossiers.xlsx');
     }
 
@@ -419,7 +449,7 @@ class DossiersController extends AppBaseController
             $notedebit3 = (float)($noteDebitDossier->notedebit3 ?? 0);
             $notedebit4 = (float)($noteDebitDossier->notedebit4 ?? 0);
             $notedebit5 = (float)($noteDebitDossier->notedebit5 ?? 0);
-        
+
             $total_ht_note = $notedebit1 + $notedebit2 + $notedebit3 + $notedebit4 + $notedebit5;
         } else {
             $total_ht_note = 0; // or handle the null case as needed
@@ -437,28 +467,26 @@ class DossiersController extends AppBaseController
         $fractionalPartInWords_note = $numberTransformer->toWords($fractionalPart_note);
 
         // Combine the parts
-        if($noteDebitDossier->a_paye == "MAD"){
+        if ($noteDebitDossier->a_paye == "MAD") {
             if ($fractionalPart_note > 0) {
                 $numberInWords_note = strtoupper($integerPartInWords_note . ' DIRHAMS ET ' . $fractionalPartInWords_note . ' CENTIMES');
             } else {
                 $numberInWords_note = strtoupper($integerPartInWords_note . ' DIRHAMS');
             }
-        }
-        else if($noteDebitDossier->a_paye == "EUR"){
+        } else if ($noteDebitDossier->a_paye == "EUR") {
             if ($fractionalPart_note > 0) {
                 $numberInWords_note = strtoupper($integerPartInWords_note . ' EUROS ET ' . $fractionalPartInWords_note . ' CENTIMES');
             } else {
                 $numberInWords_note = strtoupper($integerPartInWords_note . ' EUROS');
             }
-        }
-        else if($noteDebitDossier->a_paye == "USD"){
+        } else if ($noteDebitDossier->a_paye == "USD") {
             if ($fractionalPart_note > 0) {
                 $numberInWords_note = strtoupper($integerPartInWords_note . ' DOLLARS ET ' . $fractionalPartInWords_note . ' CENTS');
             } else {
                 $numberInWords_note = strtoupper($integerPartInWords_note . ' DOLLARS');
             }
         }
-        
+
         // Facture PDF
         $facturesDossier = FacturesDossier::where('iddossier', $id)->first();
         if ($facturesDossier !== null) {
@@ -467,7 +495,7 @@ class DossiersController extends AppBaseController
             $facturer3 = (float)($facturesDossier->facturer3 ?? 0);
             $facturer4 = (float)($facturesDossier->facturer4 ?? 0);
             $facturer5 = (float)($facturesDossier->facturer5 ?? 0);
-        
+
             $total_ht_facture = $facturer1 + $facturer2 + $facturer3 + $facturer4 + $facturer5;
         } else {
             $total_ht_facture = 0; // or handle the null case as needed
@@ -482,21 +510,19 @@ class DossiersController extends AppBaseController
         $fractionalPartInWords_facture = $numberTransformer->toWords($fractionalPart_facture);
 
         // Combine the parts
-        if($facturesDossier->a_paye == "MAD"){
+        if ($facturesDossier->a_paye == "MAD") {
             if ($fractionalPart_facture > 0) {
                 $numberInWords_facture = strtoupper($integerPartInWords_facture . ' DIRHAMS ET ' . $fractionalPartInWords_facture . ' CENTIMES');
             } else {
                 $numberInWords_facture = strtoupper($integerPartInWords_facture . ' DIRHAMS');
             }
-        }
-        else if($facturesDossier->a_paye == "EUR"){
+        } else if ($facturesDossier->a_paye == "EUR") {
             if ($fractionalPart_facture > 0) {
                 $numberInWords_facture = strtoupper($integerPartInWords_facture . ' EUROS ET ' . $fractionalPartInWords_facture . ' CENTIMES');
             } else {
                 $numberInWords_facture = strtoupper($integerPartInWords_facture . ' EUROS');
             }
-        }
-        else if($facturesDossier->a_paye == "USD"){
+        } else if ($facturesDossier->a_paye == "USD") {
             if ($fractionalPart_facture > 0) {
                 $numberInWords_facture = strtoupper($integerPartInWords_facture . ' DOLLARS ET ' . $fractionalPartInWords_facture . ' CENTS');
             } else {
@@ -515,19 +541,19 @@ class DossiersController extends AppBaseController
             'facturesDossier' => $facturesDossier,
             'dossier' => $dossier,
         ];
-        
+
         $pdf = Pdf::loadView('dossiers.imprimer', $data);
-        $pdf->setOption('isPhpEnabled', true); 
+        $pdf->setOption('isPhpEnabled', true);
 
         // Set a dynamic filename
         $fileName = $facturesDossier->dossiers->clients->nom . ' ' . $facturesDossier->numFacturation . ' ' . $noteDebitDossier->numnotedebit . '.pdf';
         return $pdf->stream($fileName);
     }
-    
+
     public function exportCloture(Request $request)
     {
         $year = $request->input('year-export', Carbon::now()->year);
-        
+
         return Excel::download(new DossiersCloturesExport($year), 'liste-dossiers-clotures.xlsx');
     }
 

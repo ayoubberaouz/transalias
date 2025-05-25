@@ -57,16 +57,14 @@ class NoteDebitDossierController extends AppBaseController
         // Filter by year
         if ($request->filled('year')) {
             $query->where('NoteDebitDossier.datenotationdebit', 'like', '%' . $request->input('year') . '%');
-        }
-        else{
+        } else {
             $query->where('NoteDebitDossier.datenotationdebit', 'like', '%' . $currentDate->year . '%');
         }
 
         // Filter by societe
         if ($request->filled('societe')) {
             $query->where('Clients.societe', $request->input('societe'));
-        }
-        else{
+        } else {
             $query->where('Clients.societe', 1);
         }
 
@@ -109,8 +107,8 @@ class NoteDebitDossierController extends AppBaseController
                 'dossiers.*',
                 'Clients.societe as selectedSociete',
                 'anneedossier.*'
-            ])->paginate(20)->appends($request->except('page')); // Append query parameters to pagination links
-        
+            ])->paginate(5)->appends($request->except('page')); // Append query parameters to pagination links
+
         $clients = DB::table('Clients')->get();
         $clientsOptions = ['' => ''] + $clients->pluck('nom', 'id')->toArray();
 
@@ -151,7 +149,7 @@ class NoteDebitDossierController extends AppBaseController
         $dossiers = $query->where('dossiers.etat_cloture', 1)
             ->where('dossiers.etat_notedebit', 0)
             ->orderBy('dossiers.id', 'desc')
-            ->paginate(20)
+            ->paginate(5)
             ->appends($request->except('page')); // Append query parameters to pagination links
 
         $clients = DB::table('Clients')->get();
@@ -179,9 +177,9 @@ class NoteDebitDossierController extends AppBaseController
         // add num facturation 
         $client = Clients::findOrFail($dossiers->client)->where('id', $dossiers->societe)->get();
         $currentDate = Carbon::now('Africa/Casablanca');
-        $numNoteDebit = $client->count();       
+        $numNoteDebit = $client->count();
         $numNoteDebit += 1;
-        $nd = $numNoteDebit . '/' . $currentDate->year;
+        $nd = $numNoteDebit .  'T/' . $currentDate->year;
 
         $modePaiment = [
             '' => '',
@@ -190,7 +188,7 @@ class NoteDebitDossierController extends AppBaseController
             'Virement' => 'Virement',
             'Autres' => 'Autres'
         ];
-        
+
         $a_payer = [
             '' => '',
             'MAD' => 'MAD (Dirham marocain)',
@@ -378,7 +376,7 @@ class NoteDebitDossierController extends AppBaseController
 
         return redirect(route('noteDebitDossiers.index'));
     }
-    
+
     public function updatePaiement($id)
     {
         $noteDebitDossier = $this->noteDebitDossierRepository->find($id);
@@ -412,12 +410,12 @@ class NoteDebitDossierController extends AppBaseController
             $notedebit3 = (float)($noteDebitDossier->notedebit3 ?? 0);
             $notedebit4 = (float)($noteDebitDossier->notedebit4 ?? 0);
             $notedebit5 = (float)($noteDebitDossier->notedebit5 ?? 0);
-        
+
             $total_ht = $notedebit1 + $notedebit2 + $notedebit3 + $notedebit4 + $notedebit5;
         } else {
             $total_ht = 0; // or handle the null case as needed
         }
-        
+
         $numberToWords = new NumberToWords();
         $numberTransformer = $numberToWords->getNumberTransformer('fr');
 
@@ -430,21 +428,19 @@ class NoteDebitDossierController extends AppBaseController
         $fractionalPartInWords = $numberTransformer->toWords($fractionalPart);
 
         // Combine the parts
-        if($noteDebitDossier->a_paye == "MAD"){
+        if ($noteDebitDossier->a_paye == "MAD") {
             if ($fractionalPart > 0) {
                 $numberInWords = strtoupper($integerPartInWords . ' DIRHAMS ET ' . $fractionalPartInWords . ' CENTIMES');
             } else {
                 $numberInWords = strtoupper($integerPartInWords . ' DIRHAMS');
             }
-        }
-        else if($noteDebitDossier->a_paye == "EUR"){
+        } else if ($noteDebitDossier->a_paye == "EUR") {
             if ($fractionalPart > 0) {
                 $numberInWords = strtoupper($integerPartInWords . ' EUROS ET ' . $fractionalPartInWords . ' CENTIMES');
             } else {
                 $numberInWords = strtoupper($integerPartInWords . ' EUROS');
             }
-        }
-        else if($noteDebitDossier->a_paye == "USD"){
+        } else if ($noteDebitDossier->a_paye == "USD") {
             if ($fractionalPart > 0) {
                 $numberInWords = strtoupper($integerPartInWords . ' DOLLARS ET ' . $fractionalPartInWords . ' CENTS');
             } else {
@@ -468,7 +464,7 @@ class NoteDebitDossierController extends AppBaseController
     {
         $data = $this->generatePdfData($id);
         $pdf = Pdf::loadView('note_debit_dossiers.imprimer', $data);
-        $pdf->setOption('isPhpEnabled', true);  
+        $pdf->setOption('isPhpEnabled', true);
 
         $noteDebitDossier = $this->noteDebitDossierRepository->find($id);
         $fileName = $noteDebitDossier->numnotedebit . ' ' . $noteDebitDossier->dossiers->clients->nom . '.pdf';
@@ -480,19 +476,19 @@ class NoteDebitDossierController extends AppBaseController
     {
         $data = $this->generatePdfData($id);
         $pdf = Pdf::loadView('note_debit_dossiers.imprimer', $data);
-        $pdf->setOption('isPhpEnabled', true);  
+        $pdf->setOption('isPhpEnabled', true);
 
         $noteDebitDossier = $this->noteDebitDossierRepository->find($id);
         $fileName = $noteDebitDossier->numnotedebit . ' ' . $noteDebitDossier->dossiers->clients->nom . '.pdf';
 
         return $pdf->download($fileName);
     }
-    
+
     public function export(Request $request)
     {
         $year = $request->input('year-export', Carbon::now()->year);
         $societe = $request->input('societe-export');
-        
+
         return Excel::download(new NotesDebitExport($year, $societe), 'liste-notes-debit.xlsx');
     }
 }

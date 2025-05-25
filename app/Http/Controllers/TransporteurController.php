@@ -38,11 +38,10 @@ class TransporteurController extends AppBaseController
     {
         if ($request->filled('nom')) {
             $nom = $request->input('nom');
-            
-            $transporteurs = Transporteur::where('nom', 'like' , '%'.$nom.'%')->orderBy('id', 'desc')->paginate(20);
-        }
-        else{
-            $transporteurs = Transporteur::orderBy('id', 'desc')->paginate(20);
+
+            $transporteurs = Transporteur::where('nom', 'like', '%' . $nom . '%')->orderBy('id', 'desc')->paginate(5);
+        } else {
+            $transporteurs = Transporteur::orderBy('id', 'desc')->paginate(5);
         }
 
         return view('transporteurs.index')

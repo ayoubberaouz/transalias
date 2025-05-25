@@ -15,7 +15,7 @@ class AddForeignKeyToAnneedossierTable extends Migration
     {
         Schema::table('anneedossier', function (Blueprint $table) {
             $table->unsignedInteger('iddossier')->nullable();
-            $table->foreign('iddossier')->references('id')->on('Dossiers');
+            $table->foreign('iddossier')->references('id')->on('Dossiers')->onDelete('cascade');
         });
     }
 

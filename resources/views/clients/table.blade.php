@@ -35,14 +35,22 @@
                     </td>
                     <td>{{ $clients->nCompte }}</td>
                     <td>
-                        <div class=''>
-                            <a href="{{ route('clients.show', [$clients->id]) }}" class='btn btn-outline-secondary p-2' title="Détails">
-                                <i class="far fa-eye"></i>
-                            </a>
-                            <a href="{{ route('clients.edit', [$clients->id]) }}" class='btn btn-outline-warning p-2' title="Modifier">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                        </div>
+                        <a href="{{ route('clients.show', [$clients->id]) }}" class='btn btn-outline-secondary p-2'
+                            title="Détails">
+                            <i class="far fa-eye"></i>
+                        </a>
+                        <a href="{{ route('clients.edit', [$clients->id]) }}" class='btn btn-outline-warning p-2'
+                            title="Modifier">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        {!! Form::open(['route' => ['clients.destroy', $clients->id], 'method' => 'delete']) !!}
+                        {!! Form::button('<i class="far fa-trash-alt"></i>', [
+                            'type' => 'submit',
+                            'class' => 'btn btn-outline-danger px-3 py-2',
+                            'onclick' => "return confirm('Vous êtes sur ?')",
+                            'title' => 'Supprimer',
+                        ]) !!}
+                        {!! Form::close() !!}
                     </td>
                 </tr>
             @endforeach

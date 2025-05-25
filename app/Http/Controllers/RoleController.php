@@ -40,9 +40,9 @@ class RoleController extends AppBaseController
      */
     public function index(RoleDataTable $roleDataTable)
     {
-        $roles = $this->roleRepository->paginate(20);
+        $roles = $this->roleRepository->paginate(5);
 
-        return view('roles.index')->with('roles', $roles);    
+        return view('roles.index')->with('roles', $roles);
     }
 
     /**
@@ -128,7 +128,7 @@ class RoleController extends AppBaseController
 
         return view('roles.edit')->with('role', $role)->with('allPermission', $allPermission);
     }
- 
+
     /**
      * Update the specified Role in storage.
      *
@@ -152,7 +152,7 @@ class RoleController extends AppBaseController
 
         // add historique
         $currentDate = Carbon::now('Africa/Casablanca');
-        
+
         $historique = [
             "taches" => "Modification d'un role",
             "date" => $currentDate,

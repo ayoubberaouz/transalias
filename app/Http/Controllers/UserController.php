@@ -41,7 +41,7 @@ class UserController extends AppBaseController
      */
     public function index(UserDataTable $userDataTable)
     {
-        $users = $this->userRepository->paginate(20);
+        $users = $this->userRepository->paginate(5);
 
         return view('users.index')
             ->with('users', $users);
@@ -192,7 +192,7 @@ class UserController extends AppBaseController
         $user = auth()->user();
         return view('users.profile')->with('user', $user);
     }
-    
+
     public function updateProfile(UpdateProfileRequest $request)
     {
         $id = auth()->user()->id;

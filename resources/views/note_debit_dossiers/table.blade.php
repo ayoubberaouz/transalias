@@ -94,6 +94,14 @@
                                 target="_blank" class='btn btn-info text-white p-2' title="Télécharger">
                                 <i class="fas fa-download"></i>
                             </a>
+                            {!! Form::open(['route' => ['noteDebitDossiers.destroy', $noteDebitDossier->idNoteDebit], 'method' => 'delete']) !!}
+                            {!! Form::button('<i class="far fa-trash-alt"></i>', [
+                                'type' => 'submit',
+                                'class' => 'btn btn-outline-danger px-3 py-2',
+                                'onclick' => "return confirm('Vous êtes sur ?')",
+                                'title' => 'Supprimer',
+                            ]) !!}
+                            {!! Form::close() !!}
                         </div>
                     </td>
                 </tr>

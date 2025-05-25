@@ -34,6 +34,14 @@
                                 class='btn btn-outline-warning p-2'>
                                 <i class="fas fa-edit"></i>
                             </a>
+                            {!! Form::open(['route' => ['transitaireAlgs.destroy', $transitaireAlg->id], 'method' => 'delete']) !!}
+                            {!! Form::button('<i class="far fa-trash-alt"></i>', [
+                                'type' => 'submit',
+                                'class' => 'btn btn-outline-danger px-3 py-2',
+                                'onclick' => "return confirm('Vous êtes sur ?')",
+                                'title' => 'Supprimer',
+                            ]) !!}
+                            {!! Form::close() !!}
                         </div>
                     </td>
                 </tr>

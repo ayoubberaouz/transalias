@@ -183,9 +183,6 @@ class RoleController extends AppBaseController
         }
 
         $this->roleRepository->delete($id);
-
-        Flash::success('Supprimer avec succès');
-
         return redirect(route('roles.index'));
     }
 }

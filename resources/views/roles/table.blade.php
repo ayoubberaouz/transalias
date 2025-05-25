@@ -28,16 +28,14 @@
                     <td>
                         {!! Form::open(['route' => ['roles.destroy', $role->id], 'method' => 'delete']) !!}
                         <div class=''>
-                            <a href="{{ route('roles.edit', [$role->id]) }}" class='btn btn-outline-warning px-3 py-2 me-2'
+                            <a href="{{ route('roles.edit', [$role->id]) }}" class='btn btn-outline-warning px-2 py-1'
                                 title="Modifier">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            {!! Form::button('<i class="far fa-trash-alt"></i>', [
-                                'type' => 'submit',
-                                'class' => 'btn btn-outline-danger px-3 py-2',
-                                'onclick' => "return confirm('Vous êtes sur ?')",
-                                'title' => 'Supprimer',
-                            ]) !!}
+                            <button type="button" class="btn btn-outline-danger px-2 py-1 show-confirm"
+                                title="Supprimer">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
                         </div>
                         {!! Form::close() !!}
                     </td>
@@ -46,3 +44,46 @@
         </tbody>
     </table>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.show-confirm').forEach(function(button) {
+            button.addEventListener('click', function() {
+                const form = this.closest('form');
+
+                Swal.fire({
+                    title: 'Voulez-vous vraiment supprimer cet rôle ?',
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonColor: '#dc3545',
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: 'Oui',
+                    cancelButtonText: 'Non',
+                    customClass: {
+                        title: 'swal-title-dark',
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: "Le rôle a été supprimé avec succès",
+                            icon: 'success',
+                            confirmButtonColor: '#28a745',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            form.submit(); 
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Suppression annulée",
+                            text: "Le rôle n'a pas été supprimé.",
+                            icon: 'info',
+                            confirmButtonColor: '#007bff',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                });
+            });
+        });
+    });
+</script>
+

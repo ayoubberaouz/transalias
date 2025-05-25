@@ -18,3 +18,9 @@
 .card-footer{
     background-color: transparent !important;
 }
+
+.swal-title-dark {
+    color: #000 !important; 
+}
+
+

@@ -9,7 +9,7 @@
                 <th>@lang('models/transporteurs.fields.email')</th>
                 <th>@lang('models/transporteurs.fields.adresse')</th>
                 <th>@lang('models/transporteurs.fields.ville')</th>
-                <th>Numéro de Compte</th>
+                <th>N° Compte</th>
                 <th colspan="3">@lang('crud.action')</th>
             </tr>
         </thead>

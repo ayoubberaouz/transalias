@@ -1,6 +1,6 @@
 <!-- Nom Field -->
 <div class="col-sm-4">
-    {!! Form::label('nom', __('models/transporteurs.fields.nom').' :') !!}
+    {!! Form::label('nom', __('models/transporteurs.fields.nom') . ' :') !!}
     <p>{{ $transporteur->nom }}</p>
 </div>
 
@@ -12,36 +12,36 @@
 
 <!-- Fax Field -->
 <div class="col-sm-4">
-    {!! Form::label('fax', __('models/transporteurs.fields.fax').' :') !!}
+    {!! Form::label('fax', __('models/transporteurs.fields.fax') . ' :') !!}
     <p>{{ $transporteur->fax }}</p>
 </div>
 
 <!-- Gsm Field -->
 <div class="col-sm-4">
-    {!! Form::label('gsm', __('models/transporteurs.fields.gsm').' :') !!}
+    {!! Form::label('gsm', __('models/transporteurs.fields.gsm') . ' :') !!}
     <p>{{ $transporteur->gsm }}</p>
 </div>
 
 <!-- Email Field -->
 <div class="col-sm-4">
-    {!! Form::label('email', __('models/transporteurs.fields.email').' :') !!}
+    {!! Form::label('email', __('models/transporteurs.fields.email') . ' :') !!}
     <p>{{ $transporteur->email }}</p>
 </div>
 
 <!-- Adresse Field -->
 <div class="col-sm-4">
-    {!! Form::label('adresse', __('models/transporteurs.fields.adresse').' :') !!}
+    {!! Form::label('adresse', __('models/transporteurs.fields.adresse') . ' :') !!}
     <p>{{ $transporteur->adresse }}</p>
 </div>
 
 <!-- Ville Field -->
 <div class="col-sm-4">
-    {!! Form::label('ville', __('models/transporteurs.fields.ville').' :') !!}
+    {!! Form::label('ville', __('models/transporteurs.fields.ville') . ' :') !!}
     <p>{{ $transporteur->ville }}</p>
 </div>
 
 <!-- Ncompte Field -->
 <div class="col-sm-4">
-    {!! Form::label('Ncompte', 'Numéro de Compte :') !!}
+    {!! Form::label('Ncompte', 'N° Compte :') !!}
     <p>{{ $transporteur->Ncompte }}</p>
 </div>

@@ -24,42 +24,44 @@
 
 <!-- Fax Field -->
 <div class="form-group col-md-4">
-    {!! Form::label('fax', __('models/clients.fields.fax').' :') !!}
+    {!! Form::label('fax', __('models/clients.fields.fax') . ' :') !!}
     {!! Form::text('fax', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Gsm Field -->
 <div class="form-group col-md-4">
-    {!! Form::label('gsm', __('models/clients.fields.gsm').' :') !!}
+    {!! Form::label('gsm', __('models/clients.fields.gsm') . ' :') !!}
     {!! Form::text('gsm', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Email Field -->
 <div class="form-group col-md-4">
-    {!! Form::label('email', __('models/clients.fields.email').' :') !!}
+    {!! Form::label('email', __('models/clients.fields.email') . ' :') !!}
     {!! Form::text('email', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Adresse Field -->
 <div class="form-group col-md-8">
-    {!! Form::label('adresse', __('models/clients.fields.adresse').' :') !!}
+    {!! Form::label('adresse', __('models/clients.fields.adresse') . ' :') !!}
     {!! Form::text('adresse', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Ville Field -->
 <div class="form-group col-md-4">
-    {!! Form::label('ville', __('models/clients.fields.ville').' :') !!}
+    {!! Form::label('ville', __('models/clients.fields.ville') . ' :') !!}
     {!! Form::text('ville', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Ncompte Field -->
 <div class="form-group col-md-4">
-    {!! Form::label('nCompte', 'Numéro de Compte :') !!}
+    {!! Form::label('nCompte', 'N° Compte :') !!}
     {!! Form::text('nCompte', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Societe Field -->
 <div class="form-group col-md-4">
     {!! Form::label('societe', 'Société :') !!}
-    {!! Form::select('societe', ['1' => 'Transalias', '2' => 'Akbar Services', '3' => 'Inter Global Africa'], null, ['class' => 'form-control custom-select']) !!}
+    {!! Form::select('societe', ['1' => 'Transalias', '2' => 'Akbar Services', '3' => 'Inter Global Africa'], null, [
+        'class' => 'form-control custom-select',
+    ]) !!}
 </div>

@@ -1,5 +1,5 @@
 <div class="table-responsive table-striped">
-    <table class="table" id="dossiers-table" style="font-size: 13px;">
+    <table class="table" id="dossiers-table">
         <thead>
             <tr class="table-user">
                 <th>N°</th>

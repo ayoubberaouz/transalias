@@ -54,7 +54,7 @@
 
 <!-- Ncompte Field -->
 <div class="col-md-4">
-    {!! Form::label('nCompte', 'Numéro de Compte :') !!}
+    {!! Form::label('nCompte', 'N° Compte :') !!}
     <p>{{ $clients->nCompte }}</p>
 </div>
 

@@ -43,7 +43,7 @@
             <form method="GET" action="{{ route('facturesDossiers.index') }}">
                 <div class="row mb-2">
                     <div class="col-md-2">
-                        <label for="client">Société : </label>
+                        <label for="societe">Société : </label>
                         <select class="form-control custom-select" name="societe" id="societe">
                             <option value="1">Transalias</option>
                             <option value="2">Akbar Services</option>
@@ -51,7 +51,7 @@
                         </select>
                     </div>
                     <div class="col-md-2">
-                        <label for="client">Date Facture : </label>
+                        <label for="year">Date Facture : </label>
                         <select class="form-control custom-select" name="year" id="year">
                             @foreach ($years as $year)
                                 <option value={{ $year }}>{{ $year }}</option>
@@ -127,25 +127,23 @@
     window.onload = function() {
         const urlParams = new URLSearchParams(window.location.search);
         const numParam = urlParams.get('num');
-        const transporteurParam = urlParams.get('transporteur');
+        const numFactureParam = urlParams.get('num_facture');
         const matRemorqueParam = urlParams.get('mat_remorque');
         const matTracteurParam = urlParams.get('mat_tracteur');
-        const numFactureParam = urlParams.get('num_facture');
+        
         const yearParam = urlParams.get('year');
         const societeParam = urlParams.get('societe');
 
         document.getElementById("num").value = numParam || '';
-        document.getElementById("transporteur").value = transporteurParam || '';
+        document.getElementById("num_facture").value = numFactureParam || '';
         document.getElementById("mat_remorque").value = matRemorqueParam || '';
         document.getElementById("mat_tracteur").value = matTracteurParam || '';
-        document.getElementById("num_facture").value = numFactureParam || '';
-        var yearSelect = document.getElementById("year");
+
         if (yearParam) {
-            yearSelect.value = yearParam;
+            document.getElementById("year").value = yearParam;
         }
-        var societeSelect = document.getElementById("societe");
         if (societeParam) {
-            societeSelect.value = societeParam;
+            document.getElementById("societe").value = societeParam;
         }
     };
 

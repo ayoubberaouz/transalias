@@ -129,25 +129,23 @@
     window.onload = function() {
         const urlParams = new URLSearchParams(window.location.search);
         const numParam = urlParams.get('num');
-        const transporteurParam = urlParams.get('transporteur');
+        const numNoteDebitParam = urlParams.get('num_note_debit');
         const matRemorqueParam = urlParams.get('mat_remorque');
         const matTracteurParam = urlParams.get('mat_tracteur');
-        const numNoteDebitParam = urlParams.get('num_note_debit');
+
         const yearParam = urlParams.get('year');
         const societeParam = urlParams.get('societe');
 
         document.getElementById("num").value = numParam || '';
-        document.getElementById("transporteur").value = transporteurParam || '';
+        document.getElementById("num_note_debit").value = numNoteDebitParam || '';
         document.getElementById("mat_remorque").value = matRemorqueParam || '';
         document.getElementById("mat_tracteur").value = matTracteurParam || '';
-        document.getElementById("num_note_debit").value = numNoteDebitParam || '';
-        var yearSelect = document.getElementById("year");
+        
         if (yearParam) {
-            yearSelect.value = yearParam;
+            document.getElementById("year").value = yearParam;
         }
-        var societeSelect = document.getElementById("societe");
         if (societeParam) {
-            societeSelect.value = societeParam;
+            document.getElementById("societe").value = societeParam;
         }
     };
 

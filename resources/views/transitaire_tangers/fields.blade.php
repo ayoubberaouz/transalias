@@ -42,6 +42,6 @@
 
 <!-- Ncompte Field -->
 <div class="form-group col-sm-4">
-    {!! Form::label('Ncompte', 'Numéro de Compte :') !!}
+    {!! Form::label('Ncompte', 'N° Compte :') !!}
     {!! Form::text('Ncompte', null, ['class' => 'form-control']) !!}
 </div>

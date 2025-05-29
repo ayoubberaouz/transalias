@@ -31,3 +31,7 @@
 .action-buttons .btn i {
     pointer-events: none;
 }
+
+.table{
+    font-size: 13px;
+}

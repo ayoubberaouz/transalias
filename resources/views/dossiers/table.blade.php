@@ -1,5 +1,5 @@
 <div class="table-responsive table-striped">
-    <table class="table" id="dossiers-table" style="font-size: 13px;">
+    <table class="table" id="dossiers-table">
         <thead>
             <tr class="table-user">
                 <th>N°</th>
@@ -124,10 +124,10 @@
 </script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         // Clôture confirmation
-        document.querySelectorAll('.btn-cloture-confirm').forEach(function (button) {
-            button.addEventListener('click', function () {
+        document.querySelectorAll('.btn-cloture-confirm').forEach(function(button) {
+            button.addEventListener('click', function() {
                 const form = this.closest('form');
 
                 Swal.fire({

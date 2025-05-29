@@ -92,7 +92,12 @@ class FacturesDossier extends Model
      * @var array
      */
     public static $rules = [
-        
+        'dateFacturation' => 'required',
+        'mod_paiement' => 'required',
+        'designation1' => 'required',
+        'facturer1' => 'required',
+        'a_paye' => 'required',
+        'a_estimer' => 'required',
     ];
     
     public function Dossiers()

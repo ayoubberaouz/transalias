@@ -134,7 +134,14 @@ class Dossiers extends Model
      * @var array
      */
     public static $rules = [
-        
+        'societe' => 'required',
+        'client' => 'required',
+        'mat_remorque' => 'required',
+        'date_charg' => 'required',
+        'lien_chargement' => 'required',
+        'expediteur' => 'required',
+        'lieu_livraison' => 'required',
+        'destinsation' => 'required',
     ];
 
     public function Clients()

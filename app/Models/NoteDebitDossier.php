@@ -95,7 +95,13 @@ class NoteDebitDossier extends Model
      * @var array
      */
     public static $rules = [
-        
+        'datenotationdebit' => 'required',
+        'mod_paiement' => 'required',
+        'montantdebit' => 'required',
+        'designation1' => 'required',
+        'notedebit1' => 'required',
+        'a_paye' => 'required',
+        'a_estimer' => 'required',
     ];
 
     public function Dossiers()

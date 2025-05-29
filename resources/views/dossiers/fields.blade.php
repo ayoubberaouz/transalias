@@ -6,7 +6,7 @@
 
 <!-- Société Field -->
 <div class="form-group col-md-4 col-lg-3">
-    {!! Form::label('societe', 'Société :') !!}
+    {!! Form::label('societe', 'Société :',['class' => 'required']) !!}
     {!! Form::select(
         'societe',
         ['' => '', '1' => 'Transalias', '2' => 'Akbar Services', '3' => 'Inter Global Africa'],
@@ -19,7 +19,7 @@
 
 <!-- Client Field -->
 <div class="form-group col-md-4 col-lg-3">
-    {!! Form::label('client', __('models/dossiers.fields.client') . ' :') !!}
+    {!! Form::label('client', __('models/dossiers.fields.client') . ' :',['class' => 'required']) !!}
     {!! Form::select('client', isset($dossiers->clients) ? $dossiers->clients->pluck('nom', 'id') : [], null, [
         'class' => 'form-control custom-select',
     ]) !!}
@@ -33,7 +33,7 @@
 
 <!-- Mat Remorque Field -->
 <div class="form-group col-md-4 col-lg-3">
-    {!! Form::label('mat_remorque', 'Matricule du remorque :') !!}
+    {!! Form::label('mat_remorque', 'Matricule du remorque :',['class' => 'required']) !!}
     {!! Form::text('mat_remorque', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -45,31 +45,31 @@
 
 <!-- Date Charg Field -->
 <div class="form-group col-md-4 col-lg-3">
-    {!! Form::label('date_charg', 'Date de chargement :') !!}
+    {!! Form::label('date_charg', 'Date de chargement :',['class' => 'required']) !!}
     {!! Form::date('date_charg', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Lieu Chargement Field -->
 <div class="form-group col-md-4 col-lg-3">
-    {!! Form::label('lien_chargement', 'Lieu de chargement :') !!}
+    {!! Form::label('lien_chargement', 'Lieu de chargement :',['class' => 'required']) !!}
     {!! Form::text('lien_chargement', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Expediteur Field -->
 <div class="form-group col-md-4 col-lg-3">
-    {!! Form::label('expediteur', 'Expéditeur :') !!}
+    {!! Form::label('expediteur', 'Expéditeur :',['class' => 'required']) !!}
     {!! Form::text('expediteur', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Lieu Livraison Field -->
 <div class="form-group col-md-4 col-lg-3">
-    {!! Form::label('lieu_livraison', 'Lieu de livraison :') !!}
+    {!! Form::label('lieu_livraison', 'Lieu de livraison :',['class' => 'required']) !!}
     {!! Form::text('lieu_livraison', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Destination Field -->
 <div class="form-group col-md-4 col-lg-3">
-    {!! Form::label('destinsation', 'Destinateur :') !!}
+    {!! Form::label('destinsation', 'Destinateur :',['class' => 'required']) !!}
     {!! Form::text('destinsation', null, ['class' => 'form-control']) !!}
 </div>
 

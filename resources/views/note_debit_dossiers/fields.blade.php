@@ -158,13 +158,13 @@
 
 <!-- Datenotationdebit Field -->
 <div class="form-group col-md-3 col-lg-3">
-    {!! Form::label('datenotationdebit', 'Date de Note de Débit :') !!}
+    {!! Form::label('datenotationdebit', 'Date de Note de Débit :',['class' => 'required']) !!}
     {!! Form::date('datenotationdebit', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Mod Paiement Field -->
 <div class="form-group col-md-3 col-lg-3">
-    {!! Form::label('mod_paiement', 'Mode de paiement :') !!}
+    {!! Form::label('mod_paiement', 'Mode de paiement :',['class' => 'required']) !!}
     {!! Form::select('mod_paiement', $modePaiment, null, [
         'class' => 'form-control custom-select',
     ]) !!}
@@ -172,19 +172,19 @@
 
 <!-- Montantdebit Field -->
 <div class="form-group col-md-3 col-lg-3">
-    {!! Form::label('montantdebit', 'Montant à payer ( en EURO ) :') !!}
+    {!! Form::label('montantdebit', 'Montant à payer ( en EURO ) :',['class' => 'required']) !!}
     {!! Form::text('montantdebit', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Designation1 Field -->
 <div class="form-group col-md-6 col-lg-6">
-    {!! Form::label('designation1', 'Désignation 1 :') !!}
+    {!! Form::label('designation1', 'Désignation 1 :',['class' => 'required']) !!}
     {!! Form::text('designation1', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Notedebit1 Field -->
 <div class="form-group col-md-6 col-lg-6">
-    {!! Form::label('notedebit1', 'A Noter de Débit 1:') !!}
+    {!! Form::label('notedebit1', 'A Noter de Débit 1:',['class' => 'required']) !!}
     {!! Form::text('notedebit1', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -238,7 +238,7 @@
 
 <!-- A Paye Field -->
 <div class="form-group col-md-4 col-lg-4">
-    {!! Form::label('a_paye', 'Devise sur la Note de débit :') !!}
+    {!! Form::label('a_paye', 'Devise sur la Note de débit :',['class' => 'required']) !!}
     {!! Form::select('a_paye', $a_payer, null, [
         'class' => 'form-control custom-select',
     ]) !!}
@@ -252,6 +252,6 @@
 
 <!-- A Estimer Field -->
 <div class="form-group col-md-4 col-lg-4">
-    {!! Form::label('a_estimer', 'Equivalent en Dirhams	:') !!}
+    {!! Form::label('a_estimer', 'Equivalent en Dirhams	:',['class' => 'required']) !!}
     {!! Form::text('a_estimer', null, ['class' => 'form-control']) !!}
 </div>

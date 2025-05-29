@@ -69,8 +69,8 @@
                     </div>
                 </div>
 
-                <div class="row" id="advancedSearch" style="display: none;">
-                    <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-10" id="advancedSearch" style="display: none;">
                         <div class="row">
                             <div class="col-md-2 mb-1">
                                 <label for="num_note_debit">N° Note de Débit : </label>
@@ -92,10 +92,12 @@
                                 <label for="mat_tracteur">Matricule Tracteur : </label>
                                 <input type="text" class="form-control" id="mat_tracteur" name="mat_tracteur">
                             </div>
-                            <div class="col-sm-1 mb-1" style="margin-top: 2rem">
-                                <button type="submit" class="btn btn-default" style="height: 38px"><i
-                                        class="fas fa-search"></i></button>
-                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="col-sm-1 mb-1" style="margin-top: 2rem">
+                            <button type="submit" class="btn btn-default" style="height: 38px"><i
+                                    class="fas fa-search"></i></button>
                         </div>
                     </div>
                 </div>

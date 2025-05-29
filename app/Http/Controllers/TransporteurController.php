@@ -183,9 +183,6 @@ class TransporteurController extends AppBaseController
         }
 
         $this->transporteurRepository->delete($id);
-
-        Flash::success(__('Supprimer avec succès', ['model' => __('models/transporteurs.singular')]));
-
         return redirect(route('transporteurs.index'));
     }
 }

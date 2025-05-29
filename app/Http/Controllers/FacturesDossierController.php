@@ -362,9 +362,6 @@ class FacturesDossierController extends AppBaseController
         }
 
         $this->facturesDossierRepository->delete($id);
-
-        Flash::success(__('messages.deleted', ['model' => __('models/facturesDossiers.singular')]));
-
         return redirect(route('facturesDossiers.index'));
     }
 

@@ -361,9 +361,6 @@ class NoteDebitDossierController extends AppBaseController
         }
 
         $this->noteDebitDossierRepository->delete($id);
-
-        Flash::success(__('messages.deleted', ['model' => __('models/noteDebitDossiers.singular')]));
-
         return redirect(route('noteDebitDossiers.index'));
     }
 

@@ -183,9 +183,6 @@ class ClientsController extends AppBaseController
         }
 
         $this->clientsRepository->delete($id);
-
-        Flash::success(__('Supprimer avec succès', ['model' => __('models/clients.singular')]));
-
         return redirect(route('clients.index'));
     }
 

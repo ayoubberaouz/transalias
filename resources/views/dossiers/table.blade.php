@@ -28,10 +28,6 @@
                     <td>{{ $dossiers->destinsation }}</td>
                     <td width="200">
                         <div class="action-buttons d-flex flex-wrap gap-2">
-                            {{-- <a href="{{ route('dossiers.show', [$dossiers->id]) }}" class='btn btn-secondary p-2'
-                                title="Détails">
-                                <i class="far fa-eye"></i>
-                            </a> --}}
                             {!! Form::open(['route' => ['dossiers.update-etat', $dossiers->id], 'method' => 'PUT']) !!}
                             <a href="{{ route('dossiers.edit', [$dossiers->id]) }}" class='btn btn-outline-warning px-2 py-1'
                                 title="Modifier">
@@ -56,12 +52,16 @@
                                 <i class="fas fa-paperclip"></i>
                             </a>
                             {!! Form::open(['route' => ['dossiers.destroy', $dossiers->id], 'method' => 'delete']) !!}
-                            {!! Form::button('<i class="far fa-trash-alt"></i>', [
+                            <button type="button" class="btn btn-outline-danger px-2 py-1 show-confirm"
+                                title="Supprimer">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                            {{-- {!! Form::button('<i class="far fa-trash-alt"></i>', [
                                 'type' => 'submit',
                                 'class' => 'btn btn-outline-danger px-2 py-1',
                                 'onclick' => "return confirm('Vous êtes sur ?')",
                                 'title' => 'Supprimer',
-                            ]) !!}
+                            ]) !!} --}}
                             {!! Form::close() !!}
                         </div>
                     </td>
@@ -70,3 +70,45 @@
         </tbody>
     </table>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.show-confirm').forEach(function(button) {
+            button.addEventListener('click', function() {
+                const form = this.closest('form');
+
+                Swal.fire({
+                    title: 'Voulez-vous vraiment supprimer cet dossier ?',
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonColor: '#dc3545',
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: 'Oui',
+                    cancelButtonText: 'Non',
+                    customClass: {
+                        title: 'swal-title-dark',
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: "Le dossier a été supprimé avec succès",
+                            icon: 'success',
+                            confirmButtonColor: '#28a745',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            form.submit(); // Submit after showing success
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Suppression annulée",
+                            text: "Le dossier n'a pas été supprimé.",
+                            icon: 'info',
+                            confirmButtonColor: '#007bff',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                });
+            });
+        });
+    });
+</script>

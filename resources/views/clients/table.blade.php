@@ -34,26 +34,69 @@
                         @endif
                     </td>
                     <td>{{ $clients->nCompte }}</td>
-                    <td>
-                        <a href="{{ route('clients.show', [$clients->id]) }}" class='btn btn-outline-secondary p-2'
-                            title="Détails">
-                            <i class="far fa-eye"></i>
-                        </a>
-                        <a href="{{ route('clients.edit', [$clients->id]) }}" class='btn btn-outline-warning p-2'
-                            title="Modifier">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        {!! Form::open(['route' => ['clients.destroy', $clients->id], 'method' => 'delete']) !!}
-                        {!! Form::button('<i class="far fa-trash-alt"></i>', [
-                            'type' => 'submit',
-                            'class' => 'btn btn-outline-danger px-3 py-2',
-                            'onclick' => "return confirm('Vous êtes sur ?')",
-                            'title' => 'Supprimer',
-                        ]) !!}
-                        {!! Form::close() !!}
+                    <td width="200">
+                        <div class="action-buttons d-flex flex-wrap gap-2">
+                            <a href="{{ route('clients.show', [$clients->id]) }}"
+                                class='btn btn-outline-secondary px-2 py-1' title="Détails">
+                                <i class="far fa-eye"></i>
+                            </a>
+                            <a href="{{ route('clients.edit', [$clients->id]) }}"
+                                class='btn btn-outline-warning px-2 py-1' title="Modifier">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            {!! Form::open(['route' => ['clients.destroy', $clients->id], 'method' => 'delete']) !!}
+                            <button type="button" class="btn btn-outline-danger px-2 py-1 show-confirm"
+                                title="Supprimer">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                            {!! Form::close() !!}
+                        </div>
+
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.show-confirm').forEach(function(button) {
+            button.addEventListener('click', function() {
+                const form = this.closest('form');
+
+                Swal.fire({
+                    title: 'Voulez-vous vraiment supprimer cet client ?',
+                    icon: "question",
+                    showCancelButton: true,
+                    confirmButtonColor: '#dc3545',
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: 'Oui',
+                    cancelButtonText: 'Non',
+                    customClass: {
+                        title: 'swal-title-dark',
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: "Le client a été supprimé avec succès",
+                            icon: 'success',
+                            confirmButtonColor: '#28a745',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            form.submit(); // Submit after showing success
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Suppression annulée",
+                            text: "Le client n'a pas été supprimé.",
+                            icon: 'info',
+                            confirmButtonColor: '#007bff',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                });
+            });
+        });
+    });
+</script>

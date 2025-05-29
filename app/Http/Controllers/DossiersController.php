@@ -415,8 +415,6 @@ class DossiersController extends AppBaseController
 
         $this->dossiersRepository->delete($id);
 
-        Flash::success(__('Supprimer avec succès', ['model' => __('models/dossiers.singular')]));
-
         return redirect(route('dossiers.index'));
     }
 

@@ -183,9 +183,6 @@ class TransitaireAlgController extends AppBaseController
         }
 
         $this->transitaireAlgRepository->delete($id);
-
-        Flash::success(__('Supprimer avec succès', ['model' => __('models/transitaireAlgs.singular')]));
-
         return redirect(route('transitaireAlgs.index'));
     }
 }

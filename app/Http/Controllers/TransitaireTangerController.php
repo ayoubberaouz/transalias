@@ -183,9 +183,6 @@ class TransitaireTangerController extends AppBaseController
         }
 
         $this->transitaireTangerRepository->delete($id);
-
-        Flash::success(__('Supprimer avec succès', ['model' => __('models/transitaireTangers.singular')]));
-
         return redirect(route('transitaireTangers.index'));
     }
 }

@@ -29,11 +29,11 @@
                     <td width="200">
                         <div class="action-buttons d-flex flex-wrap gap-2">
                             {!! Form::open(['route' => ['dossiers.update-etat', $dossiers->id], 'method' => 'PUT']) !!}
-                            <a href="{{ route('dossiers.edit', [$dossiers->id]) }}" class='btn btn-outline-warning px-2 py-1'
-                                title="Modifier">
+                            <a href="{{ route('dossiers.edit', [$dossiers->id]) }}"
+                                class='btn btn-outline-warning px-2 py-1' title="Modifier">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            @if ($dossiers->etat_cloture == 0)
+                            {{-- @if ($dossiers->etat_cloture == 0)
                                 {!! Form::button('<i class="fas fa-lock"></i>', [
                                     'type' => 'submit',
                                     'class' => 'btn btn-outline-danger px-2 py-1',
@@ -46,6 +46,22 @@
                                     'title' => 'Déja Clôturé',
                                 ]) !!}
                             @endif
+                            {!! Form::close() !!} --}}
+
+                            @if ($dossiers->etat_cloture == 0)
+                                {!! Form::button('<i class="fas fa-lock"></i>', [
+                                    'type' => 'button', // Important: change from submit to button
+                                    'class' => 'btn btn-outline-danger px-2 py-1 btn-cloture-confirm',
+                                    'title' => 'Clôturé',
+                                    'data-id' => $dossiers->id,
+                                ]) !!}
+                            @elseif ($dossiers->etat_cloture == 1)
+                                {!! Form::button('<i class="fas fa-lock"></i>', [
+                                    'class' => 'btn btn-outline-success px-2 py-1',
+                                    'title' => 'Déjà Clôturé',
+                                    'disabled' => true,
+                                ]) !!}
+                            @endif
                             {!! Form::close() !!}
                             <a href="{{ route('dossiers.show-uploads', [$dossiers->id]) }}"
                                 class='btn btn-outline-secondary px-2 py-1' title="Joindre des fichiers">
@@ -56,12 +72,6 @@
                                 title="Supprimer">
                                 <i class="far fa-trash-alt"></i>
                             </button>
-                            {{-- {!! Form::button('<i class="far fa-trash-alt"></i>', [
-                                'type' => 'submit',
-                                'class' => 'btn btn-outline-danger px-2 py-1',
-                                'onclick' => "return confirm('Vous êtes sur ?')",
-                                'title' => 'Supprimer',
-                            ]) !!} --}}
                             {!! Form::close() !!}
                         </div>
                     </td>
@@ -102,6 +112,48 @@
                         Swal.fire({
                             title: "Suppression annulée",
                             text: "Le dossier n'a pas été supprimé.",
+                            icon: 'info',
+                            confirmButtonColor: '#007bff',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Clôture confirmation
+        document.querySelectorAll('.btn-cloture-confirm').forEach(function (button) {
+            button.addEventListener('click', function () {
+                const form = this.closest('form');
+
+                Swal.fire({
+                    title: 'Êtes-vous sûr de vouloir clôturer cette opération avec facturation ?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#28a745',
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: 'Oui, clôturer',
+                    cancelButtonText: 'Annuler',
+                    customClass: {
+                        title: 'swal-title-dark'
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: "Opération clôturée avec succès",
+                            icon: 'success',
+                            confirmButtonColor: '#28a745',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            form.submit(); // Submit the form
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Clôture annulée",
                             icon: 'info',
                             confirmButtonColor: '#007bff',
                             confirmButtonText: 'OK'

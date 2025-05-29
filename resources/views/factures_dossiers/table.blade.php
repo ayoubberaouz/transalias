@@ -42,10 +42,9 @@
                                 'method' => 'PUT',
                             ]) !!}
                             {!! Form::button('Non Payée', [
-                                'type' => 'submit',
-                                'class' => 'btn btn-default p-2',
+                                'type' => 'button', // prevent form from auto-submitting
+                                'class' => 'btn btn-default p-2 btn-paiement-confirm',
                                 'title' => 'Cliquer pour payée',
-                                'onclick' => "return confirm('Etes-vous sûr que cette facture a été déjà payée ?')",
                                 'style' => 'font-size: smaller',
                             ]) !!}
                             {!! Form::close() !!}
@@ -54,6 +53,7 @@
                         @else
                             -
                         @endif
+
                     </td>
                     <td width="250">
                         <div class='action-buttons d-flex flex-wrap gap-2'>
@@ -118,6 +118,48 @@
                         Swal.fire({
                             title: "Suppression annulée",
                             text: "La facture n'a pas été supprimée.",
+                            icon: 'info',
+                            confirmButtonColor: '#007bff',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Paiement confirmation
+        document.querySelectorAll('.btn-paiement-confirm').forEach(function (button) {
+            button.addEventListener('click', function () {
+                const form = this.closest('form');
+
+                Swal.fire({
+                    title: 'Êtes-vous sûr que cette facture a été déjà payée ?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#28a745',
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: 'Oui',
+                    cancelButtonText: 'Non',
+                    customClass: {
+                        title: 'swal-title-dark',
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: "La facture est payée avec succès",
+                            icon: 'success',
+                            confirmButtonColor: '#28a745',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            form.submit();
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "La facture est non payée",
                             icon: 'info',
                             confirmButtonColor: '#007bff',
                             confirmButtonText: 'OK'

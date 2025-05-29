@@ -42,10 +42,9 @@
                                 'method' => 'PUT',
                             ]) !!}
                             {!! Form::button('Non Payée', [
-                                'type' => 'submit',
-                                'class' => 'btn btn-default p-2',
+                                'type' => 'button', // changed from 'submit'
+                                'class' => 'btn btn-default p-2 btn-note-confirm',
                                 'title' => 'Cliquer pour payée',
-                                'onclick' => "return confirm('Etes-vous sûr que cette note de débit a été déjà payée ?')",
                                 'style' => 'font-size: smaller',
                             ]) !!}
                             {!! Form::close() !!}
@@ -118,6 +117,48 @@
                         Swal.fire({
                             title: "Suppression annulée",
                             text: "La note de débit n'a pas été supprimée.",
+                            icon: 'info',
+                            confirmButtonColor: '#007bff',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Note de Débit paiement confirmation
+        document.querySelectorAll('.btn-note-confirm').forEach(function (button) {
+            button.addEventListener('click', function () {
+                const form = this.closest('form');
+
+                Swal.fire({
+                    title: 'Êtes-vous sûr que cette note de débit a été déjà payée ?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#28a745',
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: 'Oui',
+                    cancelButtonText: 'Non',
+                    customClass: {
+                        title: 'swal-title-dark',
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: "La note de débit est payée avec succès",
+                            icon: 'success',
+                            confirmButtonColor: '#28a745',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            form.submit();
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "La note de débit est non payée",
                             icon: 'info',
                             confirmButtonColor: '#007bff',
                             confirmButtonText: 'OK'

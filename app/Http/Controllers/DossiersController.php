@@ -424,9 +424,6 @@ class DossiersController extends AppBaseController
 
         $dossier->etat_cloture = 1;
         $dossier->save();
-
-        Flash::success(__('Le dossier est cloturé avec succès', ['model' => __('models/dossiers.singular')]));
-
         return redirect()->route('dossiers.index');
     }
 

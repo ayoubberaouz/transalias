@@ -10,17 +10,17 @@
                 <div class="col-md-7">
                     <form method="GET" action="{{ route('export-factures') }}">
                         <div class="row">
-                            <div class="col-md-2 mt-2">
+                            <div class="col-md-2 mt-2 text-right">
                                 <label for="client">Société : </label>
                             </div>
-                            <div class="col-md-2 mb-2">
+                            <div class="col-md-3 mb-2">
                                 <select class="form-control custom-select" name="societe-export" id="societe-export">
                                     <option value="1">Transalias</option>
                                     <option value="2">Akbar Services</option>
                                     <option value="3">Inter Global Africa</option>
                                 </select>
                             </div>
-                            <div class="col-md-2 mt-2">
+                            <div class="col-md-2 mt-2 text-right">
                                 <label for="year-export">Date Factures : </label>
                             </div>
                             <div class="col-md-2 mb-2">
@@ -58,6 +58,10 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="col-sm-2" style="margin-top: 2rem">
+                        <button type="submit" class="btn btn-default" style="height: 38px"><i
+                                class="fas fa-search"></i></button>
+                    </div>
                 </div>
 
                 <div class="row">
@@ -91,10 +95,6 @@
                             <div class="col-md-2 mb-1">
                                 <label for="mat_tracteur">Matricule Tracteur : </label>
                                 <input type="text" class="form-control" id="mat_tracteur" name="mat_tracteur">
-                            </div>
-                            <div class="col-sm-1 mb-1" style="margin-top: 2rem">
-                                <button type="submit" class="btn btn-default" style="height: 38px"><i
-                                        class="fas fa-search"></i></button>
                             </div>
                         </div>
                     </div>

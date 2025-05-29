@@ -15,21 +15,21 @@
                 </div>
             </div>
 
-            <div class="row d-flex justify-content-center">
+            <div class="row d-flex justify-content-end">
                 <div class="col-md-6">
                     <form method="GET" action="{{ route('export-dossiers') }}">
                         <div class="row">
                             <div class="col-md-4 mt-2 text-right">
                                 <label for="client">Date Dossiers : </label>
                             </div>
-                            <div class="col-md-4 mb-2">
+                            <div class="col-md-2 mb-2">
                                 <select class="form-control custom-select" name="year-export" id="year-export">
                                     @foreach ($years as $year)
                                         <option value={{ $year }}>{{ $year }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <button type="submit" class='btn btn-success text-white float-right'>
                                     <i class="far fa-file-excel"></i> Exporter
                                 </button>
@@ -49,36 +49,49 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="col-sm-2" style="margin-top: 2rem">
+                        <button type="submit" class="btn btn-default" style="height: 38px"><i
+                                class="fas fa-search"></i></button>
+                    </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-2 mb-1">
-                        <label for="client">Cilent : </label>
-                        {!! Form::select('client', $clientsOptions, null, ['class' => 'form-control custom-select']) !!}
+                    <div class="col-sm-12 m-3">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                            <label class="custom-control-label" for="customSwitch1">Recherche Avancé</label>
+                        </div>
                     </div>
-                    <div class="col-sm-1 mb-1">
-                        <label for="num">N° Dossier : </label>
-                        <input type="text" class="form-control" id="num" name="num">
-                    </div>
-                    <div class="col-sm-2 mb-1">
-                        <label for="reference">Référence : </label>
-                        <input type="text" class="form-control" id="reference" name="reference">
-                    </div>
-                    <div class="col-sm-2 mb-1">
-                        <label for="transporteur">Transporteur : </label>
-                        <input type="text" class="form-control" id="transporteur" name="transporteur">
-                    </div>
-                    <div class="col-sm-2 mb-1">
-                        <label for="mat_remorque">Matricule Remorque : </label>
-                        <input type="text" class="form-control" id="mat_remorque" name="mat_remorque">
-                    </div>
-                    <div class="col-sm-2 mb-1">
-                        <label for="mat_tracteur">Matricule Tracteur : </label>
-                        <input type="text" class="form-control" id="mat_tracteur" name="mat_tracteur">
-                    </div>
-                    <div class="col-sm-1 mb-1" style="margin-top: 2rem">
-                        <button type="submit" class="btn btn-default" style="height: 38px"><i
-                                class="fas fa-search"></i></button>
+                </div>
+
+                <div class="row" id="advancedSearch" style="display: none;">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-2 mb-1">
+                                <label for="client">Cilent : </label>
+                                {!! Form::select('client', $clientsOptions, null, ['class' => 'form-control custom-select']) !!}
+                            </div>
+                            <div class="col-sm-2 mb-1">
+                                <label for="num">N° Dossier : </label>
+                                <input type="text" class="form-control" id="num" name="num">
+                            </div>
+                            <div class="col-sm-2 mb-1">
+                                <label for="reference">Référence : </label>
+                                <input type="text" class="form-control" id="reference" name="reference">
+                            </div>
+                            <div class="col-sm-2 mb-1">
+                                <label for="transporteur">Transporteur : </label>
+                                <input type="text" class="form-control" id="transporteur" name="transporteur">
+                            </div>
+                            <div class="col-sm-2 mb-1">
+                                <label for="mat_remorque">Matricule Remorque : </label>
+                                <input type="text" class="form-control" id="mat_remorque" name="mat_remorque">
+                            </div>
+                            <div class="col-sm-2 mb-1">
+                                <label for="mat_tracteur">Matricule Tracteur : </label>
+                                <input type="text" class="form-control" id="mat_tracteur" name="mat_tracteur">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -127,4 +140,13 @@
             yearSelect.value = yearParam;
         }
     };
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggle = document.getElementById('customSwitch1');
+        const advancedSearchDiv = document.getElementById('advancedSearch');
+
+        toggle.addEventListener('change', function() {
+            advancedSearchDiv.style.display = this.checked ? 'block' : 'none';
+        });
+    });
 </script>

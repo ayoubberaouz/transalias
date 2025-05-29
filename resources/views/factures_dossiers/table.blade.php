@@ -11,7 +11,6 @@
                 <th>Matricule Remorque</th>
                 <th>Date Facturation</th>
                 <th>Etat Paiement</th>
-                <th>Etat Validation</th>
                 <th colspan="3">@lang('crud.action')</th>
             </tr>
         </thead>
@@ -52,26 +51,6 @@
                             {!! Form::close() !!}
                         @elseif($f->etat_paiement == 'Oui')
                             <button class="btn btn-info" style="font-size: smaller;">Oui Payée</button>
-                        @else
-                            -
-                        @endif
-                    </td>
-                    <td>
-                        @if ($f->isValidate == 0)
-                            {!! Form::open([
-                                'route' => ['facturesDossiers.update-validation', $f->idfacture] + request()->query(),
-                                'method' => 'PUT',
-                            ]) !!}
-                            {!! Form::button('Non Validée', [
-                                'type' => 'submit',
-                                'class' => 'btn btn-default p-2',
-                                'title' => 'Cliquer pour validée',
-                                'onclick' => "return confirm('Etes-vous sûr de validée cette facture ?')",
-                                'style' => 'font-size: smaller',
-                            ]) !!}
-                            {!! Form::close() !!}
-                        @elseif($f->isValidate == 1)
-                            <button class="btn btn-info" style="font-size: smaller;">Oui Validée</button>
                         @else
                             -
                         @endif

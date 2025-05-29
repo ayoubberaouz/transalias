@@ -372,8 +372,6 @@ class FacturesDossierController extends AppBaseController
         $facturesDossier->etat_paiement = "Oui";
         $facturesDossier->save();
 
-        Flash::success(__('La facture est payée avec succès', ['model' => __('models/facturesDossiers.singular')]));
-
         return redirect()->route('facturesDossiers.index', request()->query());
     }
 

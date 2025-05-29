@@ -370,9 +370,6 @@ class NoteDebitDossierController extends AppBaseController
 
         $noteDebitDossier->etat_paiement = "Oui";
         $noteDebitDossier->save();
-
-        Flash::success(__('La note de débit est payée avec succès', ['model' => __('models/noteDebitDossiers.singular')]));
-
         return redirect()->route('noteDebitDossiers.index', request()->query());
     }
 

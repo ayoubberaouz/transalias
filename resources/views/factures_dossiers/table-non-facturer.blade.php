@@ -31,7 +31,7 @@
                     <td>{{ $dossiers->transporteur }}</td>
                     <td>{{ $dossiers->mat_tracteur }}</td>
                     <td>{{ $dossiers->mat_remorque }}</td>
-                    <td>{{ $dossiers->date_charg }}</td>
+                    <td>{{ $dossiers->date_charg->format('Y-m-d') }}</td>
                     <td>
                         <div class='btn-group'>
                             <a href="{{ route('facturesDossiers.create-facture', [$dossiers->iddossier]) }}" class='btn btn-info text-white p-2'>

@@ -74,7 +74,7 @@
                         <td style="text-align: left"><b>N° Facture :</b> {{ $facturesDossier->numFacturation }}</td>
                     </tr>
                     <tr>
-                        <td style="text-align: left"><b>Date Facture :</b> {{ $facturesDossier->dateFacturation }}</td>
+                        <td style="text-align: left"><b>Date Facture :</b> {{ $facturesDossier->dateFacturation->format('Y-m-d') }}</td>
                     </tr>
                     <tr>
                         <td style="text-align: left"><b>Référence :</b> {{ $facturesDossier->dossiers->reference }}</td>
@@ -109,7 +109,7 @@
                 <tbody>
                     <tr>
                         <td style="height: 400px">
-                            <span>{{ $facturesDossier->dossiers->date_charg }}</span>
+                            <span>{{ $facturesDossier->dossiers->date_charg->format('Y-m-d') }}</span>
                             <br>
                             <br>
                             <br>

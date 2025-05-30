@@ -22,7 +22,7 @@
                     <td>{{ $dossiers->clients ? $dossiers->clients->nom : '-' }}</td>
                     <td>{{ $dossiers->reference }}</td>
                     <td>{{ $dossiers->transporteur }}</td>
-                    <td>{{ $dossiers->date_charg }}</td>
+                    <td>{{ $dossiers->date_charg->format('Y-m-d') }}</td>
                     <td>{{ $dossiers->mat_remorque }}</td>
                     <td>{{ $dossiers->mat_tracteur }}</td>
                     <td>{{ $dossiers->expediteur }}</td>

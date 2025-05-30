@@ -140,12 +140,20 @@
         document.getElementById("num_note_debit").value = numNoteDebitParam || '';
         document.getElementById("mat_remorque").value = matRemorqueParam || '';
         document.getElementById("mat_tracteur").value = matTracteurParam || '';
-        
+
         if (yearParam) {
             document.getElementById("year").value = yearParam;
         }
         if (societeParam) {
             document.getElementById("societe").value = societeParam;
+        }
+
+        // Automatically check toggle and show advanced search if any parameter is present
+        if (numParam || numNoteDebitParam || matRemorqueParam || matTracteurParam) {
+            const toggle = document.getElementById('customSwitch1');
+            const advancedSearchDiv = document.getElementById('advancedSearch');
+            toggle.checked = true;
+            advancedSearchDiv.style.display = 'block';
         }
     };
 

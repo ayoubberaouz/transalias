@@ -145,6 +145,15 @@
         if (societeParam) {
             document.getElementById("societe").value = societeParam;
         }
+
+        // Check if any advanced search parameter exists
+        if (numParam || numFactureParam || matRemorqueParam || matTracteurParam) {
+            const toggle = document.getElementById('customSwitch1');
+            const advancedSearchDiv = document.getElementById('advancedSearch');
+
+            toggle.checked = true;
+            advancedSearchDiv.style.display = 'block';
+        }
     };
 
     document.addEventListener('DOMContentLoaded', function() {

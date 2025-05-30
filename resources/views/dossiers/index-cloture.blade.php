@@ -109,23 +109,26 @@
         const urlParams = new URLSearchParams(window.location.search);
         const numParam = urlParams.get('num');
         const referenceParam = urlParams.get('reference');
-        const transporteurParam = urlParams.get('transporteur');
         const matRemorqueParam = urlParams.get('mat_remorque');
         const matTracteurParam = urlParams.get('mat_tracteur');
-        const factureTransitaireParam = urlParams.get('facture_transitaire');
-
         const yearParam = urlParams.get('year');
 
         document.getElementById("num").value = numParam || '';
         document.getElementById("reference").value = referenceParam || '';
-        document.getElementById("transporteur").value = transporteurParam || '';
         document.getElementById("mat_remorque").value = matRemorqueParam || '';
         document.getElementById("mat_tracteur").value = matTracteurParam || '';
-        document.getElementById("facture_transitaire").value = factureTransitaireParam || '';
 
         var yearSelect = document.getElementById("year");
         if (yearParam) {
             yearSelect.value = yearParam;
+        }
+
+        // Auto-check toggle and show advancedSearch if any relevant param exists
+        if (numParam || referenceParam || transporteurParam || matRemorqueParam || matTracteurParam) {
+            const toggle = document.getElementById('customSwitch1');
+            const advancedSearchDiv = document.getElementById('advancedSearch');
+            toggle.checked = true;
+            advancedSearchDiv.style.display = 'block';
         }
     };
 

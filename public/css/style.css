@@ -6,8 +6,10 @@
     color: white !important;
 }
 
-.table-user {
-    background-color: #344fa1;
+.table-user, .card-header {
+    /* background-color: #344fa1; */
+    background: #344FA1;
+    background: linear-gradient(90deg, rgba(52, 79, 161, 1) 50%, rgba(0, 212, 255, 1) 100%);
     color: white;
 }
 
@@ -23,7 +25,7 @@
     color: #000 !important;
 }
 
-.action-buttons > * {
+.action-buttons>* {
     margin-right: 5px;
     margin-bottom: 5px;
 }
@@ -32,6 +34,18 @@
     pointer-events: none;
 }
 
-.table{
+.table {
     font-size: 13px;
+}
+
+#accordion {
+    width: 100%;
+}
+
+.card-link {
+    color: #fff;
+}
+
+.card-link:hover {
+    color: #fff;
 }

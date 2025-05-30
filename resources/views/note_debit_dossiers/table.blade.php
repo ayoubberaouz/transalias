@@ -34,7 +34,7 @@
                     <td>{{ $noteDebitDossier->transporteur }}</td>
                     <td>{{ $noteDebitDossier->mat_tracteur }}</td>
                     <td>{{ $noteDebitDossier->mat_remorque }}</td>
-                    <td>{{ $noteDebitDossier->datenotationdebit }}</td>
+                    <td>{{ $noteDebitDossier->datenotationdebit->format('Y-m-d') }}</td>
                     <td>
                         @if ($noteDebitDossier->etat_paiement == 'Non')
                             {!! Form::open([
@@ -54,12 +54,12 @@
                             -
                         @endif
                     </td>
-                    <td width="250">
+                    <td width="200">
                         <div class='action-buttons d-flex flex-wrap gap-2'>
-                            <a href="{{ route('noteDebitDossiers.show', [$noteDebitDossier->idNoteDebit]) }}"
+                            {{-- <a href="{{ route('noteDebitDossiers.show', [$noteDebitDossier->idNoteDebit]) }}"
                                 class='btn btn-outline-secondary px-2 py-1' title="Détails">
                                 <i class="far fa-eye"></i>
-                            </a>
+                            </a> --}}
                             <a href="{{ route('noteDebitDossiers.edit', [$noteDebitDossier->idNoteDebit]) }}"
                                 class='btn btn-outline-warning px-2 py-1' title="Modifier">
                                 <i class="far fa-edit"></i>

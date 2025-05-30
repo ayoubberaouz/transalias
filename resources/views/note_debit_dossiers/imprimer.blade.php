@@ -75,7 +75,7 @@
                     </tr>
                     <tr>
                         <td style="text-align: left"><b>Date Note de Débit :</b>
-                            {{ $noteDebitDossier->datenotationdebit }}</td>
+                            {{ $noteDebitDossier->datenotationdebit->format('Y-m-d') }}</td>
                     </tr>
                     <tr>
                         <td style="text-align: left"><b>Référence :</b> {{ $noteDebitDossier->dossiers->reference }}
@@ -112,7 +112,7 @@
                 <tbody>
                     <tr>
                         <td style="height: 400px">
-                            <span>{{ $noteDebitDossier->dossiers->date_charg }}</span>
+                            <span>{{ $noteDebitDossier->dossiers->date_charg->format('Y-m-d') }}</span>
                             <br>
                             <br>
                             <br>

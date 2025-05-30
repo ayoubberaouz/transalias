@@ -34,7 +34,7 @@
                     <td>{{ $f->transporteur }}</td>
                     <td>{{ $f->mat_tracteur }}</td>
                     <td>{{ $f->mat_remorque }}</td>
-                    <td>{{ $f->dateFacturation }}</td>
+                    <td>{{ $f->dateFacturation->format('Y-m-d') }}</td>
                     <td>
                         @if ($f->etat_paiement == 'Non')
                             {!! Form::open([
@@ -55,12 +55,12 @@
                         @endif
 
                     </td>
-                    <td width="250">
+                    <td width="200">
                         <div class='action-buttons d-flex flex-wrap gap-2'>
-                            <a href="{{ route('facturesDossiers.show', [$f->idfacture]) }}"
+                            {{-- <a href="{{ route('facturesDossiers.show', [$f->idfacture]) }}"
                                 class='btn btn-outline-secondary px-2 py-1' title="Détails">
                                 <i class="far fa-eye"></i>
-                            </a>
+                            </a> --}}
                             <a href="{{ route('facturesDossiers.edit', [$f->idfacture]) }}"
                                 class='btn btn-outline-warning px-2 py-1' title="Modifier">
                                 <i class="far fa-edit"></i>
@@ -130,10 +130,10 @@
 </script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         // Paiement confirmation
-        document.querySelectorAll('.btn-paiement-confirm').forEach(function (button) {
-            button.addEventListener('click', function () {
+        document.querySelectorAll('.btn-paiement-confirm').forEach(function(button) {
+            button.addEventListener('click', function() {
                 const form = this.closest('form');
 
                 Swal.fire({

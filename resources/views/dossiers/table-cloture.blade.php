@@ -18,7 +18,7 @@
                     <td>{{ $d->annee_dossier }}</td>
                     <td>{{ $d->clients ? $d->clients->nom : '-' }}</td>
                     <td>{{ $d->reference }}</td>
-                    <td>{{ $d->date_charg }}</td>
+                    <td>{{ $d->date_charg->format('Y-m-d') }}</td>
                     <td>{{ $d->mat_remorque }}</td>
                     <td>{{ $d->mat_tracteur }}</td>
                     <td>{{ $d->num_facture ? $d->num_facture : '-' }}</td>

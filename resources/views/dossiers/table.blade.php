@@ -21,7 +21,7 @@
                     <td>{{ $dossiers->clients ? $dossiers->clients->nom : '-' }}</td>
                     <td>{{ $dossiers->reference }}</td>
                     <td>{{ $dossiers->transporteur }}</td>
-                    <td>{{ $dossiers->date_charg }}</td>
+                    <td>{{ $dossiers->date_charg->format('Y-m-d') }}</td>
                     <td>{{ $dossiers->mat_remorque }}</td>
                     <td>{{ $dossiers->mat_tracteur }}</td>
                     <td>{{ $dossiers->expediteur }}</td>
@@ -33,20 +33,6 @@
                                 class='btn btn-outline-warning px-2 py-1' title="Modifier">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            {{-- @if ($dossiers->etat_cloture == 0)
-                                {!! Form::button('<i class="fas fa-lock"></i>', [
-                                    'type' => 'submit',
-                                    'class' => 'btn btn-outline-danger px-2 py-1',
-                                    'title' => 'Clôturé',
-                                    'onclick' => "return confirm('Etes-vous sûr de vouloir clôturer cette opération avec facturation ?')",
-                                ]) !!}
-                            @elseif ($dossiers->etat_cloture == 1)
-                                {!! Form::button('<i class="fas fa-lock"></i>', [
-                                    'class' => 'btn btn-outline-success px-2 py-1',
-                                    'title' => 'Déja Clôturé',
-                                ]) !!}
-                            @endif
-                            {!! Form::close() !!} --}}
 
                             @if ($dossiers->etat_cloture == 0)
                                 {!! Form::button('<i class="fas fa-lock"></i>', [

@@ -47,7 +47,7 @@
 <!-- Date Charg Field -->
 <div class="col-md-4 col-lg-3">
     {!! Form::label('date_charg', 'Date de chargement :') !!}
-    <p>{{ $dossiers->date_charg }}</p>
+    <p>{{ $dossiers->date_charg->format('Y-m-d') }}</p>
 </div>
 
 <!-- Lien Chargement Field -->
@@ -113,25 +113,25 @@
 <!-- Date Embarquement Field -->
 <div class="col-md-4 col-lg-3">
     {!! Form::label('date_embarquement', "Date d'embarquement :") !!}
-    <p>{{ $dossiers->date_embarquement }}</p>
+    <p>{{ $dossiers->date_embarquement->format('Y-m-d') }}</p>
 </div>
 
 <!-- Date Sortie Port Field -->
 <div class="col-md-4 col-lg-3">
     {!! Form::label('date_sortie_port', 'Date sortie de port :') !!}
-    <p>{{ $dossiers->date_sortie_port }}</p>
+    <p>{{ $dossiers->date_sortie_port->format('Y-m-d') }}</p>
 </div>
 
 <!-- Date Livraison Field -->
 <div class="col-md-4 col-lg-3">
     {!! Form::label('date_livraison', 'Date de livraison :') !!}
-    <p>{{ $dossiers->date_livraison }}</p>
+    <p>{{ $dossiers->date_livraison->format('Y-m-d') }}</p>
 </div>
 
 <!-- Date Courrier Field -->
 <div class="col-md-4 col-lg-3">
     {!! Form::label('date_courrier', 'Date de courrier :') !!}
-    <p>{{ $dossiers->date_courrier }}</p>
+    <p>{{ $dossiers->date_courrier->format('Y-m-d') }}</p>
 </div>
 
 <!-- Remarque Field -->
@@ -155,7 +155,7 @@
 
 <div class="form-group col-md-3 col-lg-3">
     {!! Form::label('datenotationdebit', 'Date de Note de Débit :') !!}
-    <p>{{ $noteDebitDossier->datenotationdebit }}</p>
+    <p>{{ $noteDebitDossier->datenotationdebit->format('Y-m-d') }}</p>
 </div>
 
 <div class="form-group col-md-3 col-lg-3">

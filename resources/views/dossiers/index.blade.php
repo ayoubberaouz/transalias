@@ -126,7 +126,6 @@
         const transporteurParam = urlParams.get('transporteur');
         const matRemorqueParam = urlParams.get('mat_remorque');
         const matTracteurParam = urlParams.get('mat_tracteur');
-
         const yearParam = urlParams.get('year');
 
         document.getElementById("num").value = numParam || '';
@@ -138,6 +137,14 @@
         var yearSelect = document.getElementById("year");
         if (yearParam) {
             yearSelect.value = yearParam;
+        }
+
+        // Show advanced search if any advanced parameter is present
+        if (numParam || referenceParam || transporteurParam || matRemorqueParam || matTracteurParam) {
+            const toggle = document.getElementById('customSwitch1');
+            const advancedSearchDiv = document.getElementById('advancedSearch');
+            toggle.checked = true;
+            advancedSearchDiv.style.display = 'block';
         }
     };
 

@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h4>Mise à Jour Note de Débit</h4>
+                    <h4>Modifer un note de débit</h4>
                 </div>
             </div>
         </div>
@@ -28,10 +28,11 @@
                 </div>
             </div>
 
-            <div class="card-footer">
-                {!! Form::submit('Modifier', ['class' => 'btn btn-primary']) !!}
+            <div class="card-footer float-right">
+                {!! Form::button('<i class="far fa-save"></i> Enregistrer', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
                 <a href="{{ route('noteDebitDossiers.index') }}" class="btn btn-default">
-                    @lang('crud.cancel')
+                   <i class="fas fa-undo-alt"></i>
+                    Retour
                 </a>
             </div>
 

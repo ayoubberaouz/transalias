@@ -38,7 +38,7 @@
                     </td>
                     <td width="100">
                         <div class='btn-group'>
-                            <a href="{{ route('show-valide', [$dossiers->id]) }}" class='btn btn-outline-primary p-2'
+                            <a href="{{ route('show-valide', [$dossiers->id]) }}" class='btn btn-outline-success p-2'
                                 title="Détails">
                                 <i class="fas fa-check"></i>
                             </a>

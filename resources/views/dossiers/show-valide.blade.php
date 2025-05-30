@@ -23,10 +23,11 @@
                 </div>
             </div>
 
-            <div class="card-footer">
-                {!! Form::submit('Valider', ['class' => 'btn btn-primary']) !!}
+            <div class="card-footer float-right">
+                {!! Form::button('<i class="fas fa-check"></i> Valider', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
                 <a href="{{ route('index-valide') }}" class="btn btn-default">
-                    @lang('crud.cancel')
+                    <i class="fas fa-undo-alt"></i>
+                    Retour
                 </a>
             </div>
 

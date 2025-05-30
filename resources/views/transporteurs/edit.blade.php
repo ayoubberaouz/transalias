@@ -27,7 +27,7 @@
             </div>
 
             <div class="card-footer float-right">
-                {!! Form::submit('Enregistrer', ['class' => 'btn btn-success']) !!}
+                {!! Form::button('<i class="far fa-save"></i> Enregistrer', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
                 <a href="{{ route('transporteurs.index') }}" class="btn btn-default">
                       <i class="fas fa-undo-alt"></i>
                     Retour

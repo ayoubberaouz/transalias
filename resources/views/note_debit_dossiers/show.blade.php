@@ -7,11 +7,6 @@
                 <div class="col-sm-6">
                     <h4>Détails Note Débit</h4>
                 </div>
-                <div class="col-sm-6">
-                    <a class="btn btn-default float-right" href="{{ route('noteDebitDossiers.index') }}">
-                        @lang('crud.back')
-                    </a>
-                </div>
             </div>
         </div>
     </section>
@@ -21,6 +16,12 @@
             <div class="card-body">
                 <div class="row">
                     @include('note_debit_dossiers.show_fields')
+                </div>
+                <div class="card-footer float-right">
+                    <a class="btn btn-default " href="{{ route('noteDebitDossiers.index') }}">
+                        <i class="fas fa-undo-alt"></i>
+                        Retour
+                    </a>
                 </div>
             </div>
         </div>

@@ -25,10 +25,11 @@
                 </div>
             </div>
 
-            <div class="card-footer">
-                {!! Form::submit('Créer', ['class' => 'btn btn-primary']) !!}
+            <div class="card-footer float-right">
+                {!! Form::button('<i class="far fa-save"></i> Enregistrer', ['type' => 'submit', 'class' => 'btn btn-success']) !!}
                 <a href="{{ route('noteDebitDossiers.index') }}" class="btn btn-default">
-                    @lang('crud.cancel')
+                    <i class="fas fa-undo-alt"></i>
+                    Retour
                 </a>
             </div>
 

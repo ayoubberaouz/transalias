@@ -1,11 +1,16 @@
 <div id="accordion">
 
     <div class="card">
-        <div class="card-header">
+        <div class="card-header" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+            style="cursor: pointer;">
+            <span>Infos Voyage</span>
+            <span class="toggle-icon float-right"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        {{-- <div class="card-header">
             <a class="card-link" data-toggle="collapse" href="#collapseOne">
                 Infos Voyage
             </a>
-        </div>
+        </div> --}}
         <div id="collapseOne" class="collapse show" data-parent="#accordion">
             <div class="card-body">
                 <div class="row">
@@ -48,10 +53,16 @@
     </div>
 
     <div class="card">
-        <div class="card-header">
+        {{-- <div class="card-header">
             <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-                Trajet Voyage
+               
             </a>
+        </div> --}}
+
+        <div class="card-header" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+            style="cursor: pointer;">
+            <span class="collapsed card-link"> Trajet Voyage</span>
+            <span class="toggle-icon float-right"><i class="fas fa-chevron-down"></i></span>
         </div>
         <div id="collapseTwo" class="collapse" data-parent="#accordion">
             <div class="card-body">
@@ -91,11 +102,18 @@
     </div>
 
     <div class="card">
-        <div class="card-header">
+        <div class="card-header" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true"
+            style="cursor: pointer;">
+            <span class="collapsed card-link">Infos Complémentaire</span>
+            <span class="toggle-icon float-right"><i class="fas fa-chevron-down"></i></span>
+        </div>
+
+
+        {{-- <div class="card-header">
             <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
                 Infos Complémentaire
             </a>
-        </div>
+        </div> --}}
         <div id="collapseThree" class="collapse" data-parent="#accordion">
             <div class="card-body">
                 <div class="row">
@@ -184,6 +202,27 @@
                     });
                 }
             });
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        // Change icon when shown/hidden
+        $('#accordion .collapse').on('shown.bs.collapse', function() {
+            $(this).prev('.card-header').find('.toggle-icon i').removeClass('fa-chevron-down').addClass(
+                'fa-chevron-up');
+        });
+
+        $('#accordion .collapse').on('hidden.bs.collapse', function() {
+            $(this).prev('.card-header').find('.toggle-icon i').removeClass('fa-chevron-up').addClass(
+                'fa-chevron-down');
+        });
+
+        // Optional: Make the whole header clickable even without data-toggle on the text
+        $('#accordion .card-header').on('click', function() {
+            const target = $(this).data('target');
+            $(target).collapse('toggle');
         });
     });
 </script>

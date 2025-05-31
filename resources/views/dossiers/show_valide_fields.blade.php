@@ -1,11 +1,15 @@
 <div id="accordion">
-
     <div class="card">
-        <div class="card-header">
+        <div class="card-header" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+            style="cursor: pointer;">
+            <span>Infos Voyage</span>
+            <span class="toggle-icon float-right"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        {{-- <div class="card-header">
             <a class="card-link" data-toggle="collapse" href="#collapseOne">
                 Infos Voyage
             </a>
-        </div>
+        </div> --}}
         <div id="collapseOne" class="collapse show" data-parent="#accordion">
             <div class="card-body">
                 <div class="row">
@@ -48,39 +52,30 @@
     </div>
 
     <div class="card">
-        <div class="card-header">
-            <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-                Trajet Voyage
-            </a>
+        <div class="card-header" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+            style="cursor: pointer;">
+            <span class="collapsed card-link"> Trajet Voyage</span>
+            <span class="toggle-icon float-right"><i class="fas fa-chevron-down"></i></span>
         </div>
         <div id="collapseTwo" class="collapse" data-parent="#accordion">
             <div class="card-body">
                 <div class="row">
-                    <!-- Date Charg Field -->
                     <div class="col-md-4 col-lg-3">
                         {!! Form::label('date_charg', 'Date de chargement :') !!}
                         <p>{{ $dossiers->date_charg->format('Y-m-d') }}</p>
                     </div>
-
-                    <!-- Lien Chargement Field -->
                     <div class="col-md-4 col-lg-3">
                         {!! Form::label('lien_chargement', 'Lieu de chargement :') !!}
                         <p>{{ $dossiers->lien_chargement }}</p>
                     </div>
-
-                    <!-- Expediteur Field -->
                     <div class="col-md-4 col-lg-3">
                         {!! Form::label('expediteur', 'Expéditeur :') !!}
                         <p>{{ $dossiers->expediteur }}</p>
                     </div>
-
-                    <!-- Lieu Livraison Field -->
                     <div class="col-md-4 col-lg-3">
                         {!! Form::label('lieu_livraison', 'Lieu de livraison :') !!}
                         <p>{{ $dossiers->lieu_livraison }}</p>
                     </div>
-
-                    <!-- Destination Field -->
                     <div class="col-md-4 col-lg-3">
                         {!! Form::label('destinsation', 'Destinateur :') !!}
                         <p>{{ $dossiers->destinsation }}</p>
@@ -91,11 +86,12 @@
     </div>
 
     <div class="card">
-        <div class="card-header">
-            <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
-                Infos Complémentaire
-            </a>
+        <div class="card-header" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true"
+            style="cursor: pointer;">
+            <span class="collapsed card-link">Infos Complémentaire</span>
+            <span class="toggle-icon float-right"><i class="fas fa-chevron-down"></i></span>
         </div>
+      
         <div id="collapseThree" class="collapse" data-parent="#accordion">
             <div class="card-body">
                 <div class="row">
@@ -158,11 +154,12 @@
     </div>
 
     <div class="card">
-        <div class="card-header">
-            <a class="collapsed card-link" data-toggle="collapse" href="#collapseFour">
-                Pièces jointes
-            </a>
+           <div class="card-header" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true"
+            style="cursor: pointer;">
+            <span class="collapsed card-link">Pièces jointes</span>
+            <span class="toggle-icon float-right"><i class="fas fa-chevron-down"></i></span>
         </div>
+
         <div id="collapseFour" class="collapse" data-parent="#accordion">
             <div class="card-body">
                 <div class="row">
@@ -180,11 +177,12 @@
     </div>
 
     <div class="card">
-        <div class="card-header">
-            <a class="collapsed card-link" data-toggle="collapse" href="#collapseFive">
-                Facture et Note de débit
-            </a>
+           <div class="card-header" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true"
+            style="cursor: pointer;">
+            <span class="collapsed card-link">Facture et Note de débit</span>
+            <span class="toggle-icon float-right"><i class="fas fa-chevron-down"></i></span>
         </div>
+        
         <div id="collapseFive" class="collapse" data-parent="#accordion">
             <div class="card-body">
                 <div class="row">
@@ -210,3 +208,59 @@
         </div>
     </div>
 </div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#societe').change(function() {
+            var societeId = $(this).val();
+            $.ajax({
+                url: "{{ route('getClientsBySociete', '') }}/" + societeId,
+                type: 'GET',
+                success: function(response) {
+                    var clients = response;
+                    var clientSelect = $('#client');
+                    clientSelect.empty();
+                    $.each(clients, function(id, nom) {
+                        clientSelect.append('<option value="' + id + '">' + nom +
+                            '</option>');
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        // Function to update the icon
+        function toggleIcon(collapseElement, show) {
+            const icon = collapseElement.prev('.card-header').find('.toggle-icon i');
+            icon.toggleClass('fa-chevron-down', !show);
+            icon.toggleClass('fa-chevron-up', show);
+        }
+
+        // Handle show event
+        $('#accordion .collapse').on('shown.bs.collapse', function () {
+            toggleIcon($(this), true);
+        });
+
+        // Handle hide event
+        $('#accordion .collapse').on('hidden.bs.collapse', function () {
+            toggleIcon($(this), false);
+        });
+
+        // Optional: Make the entire header clickable
+        $('#accordion .card-header').on('click', function (e) {
+            // Avoid conflict if user clicks directly on an element already handling collapse
+            if ($(e.target).closest('[data-toggle="collapse"]').length > 0) return;
+
+            const target = $(this).data('target');
+            if (target) {
+                $(target).collapse('toggle');
+            }
+        });
+    });
+</script>
+

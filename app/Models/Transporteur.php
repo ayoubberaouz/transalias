@@ -56,7 +56,9 @@ class Transporteur extends Model
      * @var array
      */
     public static $rules = [
-        
+        'tel' => 'required',
+        'ville' => 'required',
+        'nom' => 'required',
     ];
 
     public function Dossiers()

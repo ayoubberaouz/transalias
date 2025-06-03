@@ -64,7 +64,11 @@ class Clients extends Model
      * @var array
      */
     public static $rules = [
-        
+        'societe' => 'required',
+        'raison_social' => 'required',
+        'tel' => 'required',
+        'ville' => 'required',
+        'nom' => 'required',
     ];
 
     public function Dossiers()

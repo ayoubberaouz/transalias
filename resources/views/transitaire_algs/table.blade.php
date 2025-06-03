@@ -18,12 +18,12 @@
                 <tr>
                     <td>{{ $transitaireAlg->nom }}</td>
                     <td>{{ $transitaireAlg->tel }}</td>
-                    <td>{{ $transitaireAlg->fax }}</td>
-                    <td>{{ $transitaireAlg->gsm }}</td>
-                    <td>{{ $transitaireAlg->email }}</td>
-                    <td>{{ $transitaireAlg->adresse }}</td>
+                    <td>{{ $transitaireAlg->fax ? $transitaireAlg->fax : '-' }}</td>
+                    <td>{{ $transitaireAlg->gsm ? $transitaireAlg->gsm : '-' }}</td>
+                    <td>{{ $transitaireAlg->email ? $transitaireAlg->email : '-' }}</td>
+                    <td>{{ $transitaireAlg->adresse ? $transitaireAlg->adresse : '-' }}</td>
                     <td>{{ $transitaireAlg->ville }}</td>
-                    <td>{{ $transitaireAlg->Ncompte }}</td>
+                    <td>{{ $transitaireAlg->Ncompte ? $transitaireAlg->Ncompte : '-' }}</td>
                     <td width="200">
                         <div class="action-buttons d-flex flex-wrap gap-2">
                             <a href="{{ route('transitaireAlgs.show', [$transitaireAlg->id]) }}" title="Détails"

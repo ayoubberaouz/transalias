@@ -18,12 +18,12 @@
                 <tr>
                     <td>{{ $transporteur->nom }}</td>
                     <td>{{ $transporteur->tel }}</td>
-                    <td>{{ $transporteur->fax }}</td>
-                    <td>{{ $transporteur->gsm }}</td>
-                    <td>{{ $transporteur->email }}</td>
-                    <td>{{ $transporteur->adresse }}</td>
+                    <td>{{ $transporteur->fax ? $transporteur->fax : '-' }}</td>
+                    <td>{{ $transporteur->gsm ? $transporteur->gsm : '-' }}</td>
+                    <td>{{ $transporteur->email ? $transporteur->email : '-' }}</td>
+                    <td>{{ $transporteur->adresse ? $transporteur->adresse : '-' }}</td>
                     <td>{{ $transporteur->ville }}</td>
-                    <td>{{ $transporteur->Ncompte }}</td>
+                    <td>{{ $transporteur->Ncompte ? $transporteur->Ncompte : '-' }}</td>
                     <td width="200">
                         <div class="action-buttons d-flex flex-wrap gap-2">
                             <a href="{{ route('transporteurs.show', [$transporteur->id]) }}" title="Détails"

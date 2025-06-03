@@ -1,14 +1,3 @@
-{{-- @push('third_party_stylesheets')
-    @include('layouts.datatables_css')
-@endpush
-
-{!! $dataTable->table(['width' => '100%', 'class' => 'table table-striped table-bordered']) !!}
-
-@push('third_party_scripts')
-    @include('layouts.datatables_js')
-    {!! $dataTable->scripts() !!}
-@endpush --}}
-
 <div class="table-responsive table-striped">
     <table class="table" id="roles-table">
         <thead>
@@ -23,8 +12,8 @@
             @foreach ($roles as $role)
                 <tr>
                     <td>{{ $role->name }}</td>
-                    <td>{{ $role->title }}</td>
-                    <td>{{ $role->description }}</td>
+                    <td>{{ $role->title ? $role->title : '-' }}</td>
+                    <td>{{ $role->description ? $role->description : '-' }}</td>
                     <td>
                         {!! Form::open(['route' => ['roles.destroy', $role->id], 'method' => 'delete']) !!}
                         <div class=''>

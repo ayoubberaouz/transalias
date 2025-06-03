@@ -7,7 +7,6 @@
 }
 
 .table-user, .card-header {
-    /* background-color: #344fa1; */
     background: #344FA1;
     background: linear-gradient(90deg, rgba(52, 79, 161, 1) 50%, rgba(0, 212, 255, 1) 100%);
     color: white;

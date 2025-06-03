@@ -169,7 +169,7 @@ class NoteDebitDossierController extends AppBaseController
         $currentDate = Carbon::now('Africa/Casablanca');
         $numNoteDebit = $client->count();
         $numNoteDebit += 1;
-        $nd = $numNoteDebit .  'T/' . $currentDate->year;
+        $nd = $numNoteDebit .  ' T/ ' . $currentDate->year;
 
         $modePaiment = [
             '' => '',

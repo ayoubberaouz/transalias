@@ -1,12 +1,12 @@
 <!-- Nom Field -->
 <div class="form-group col-sm-4">
-    {!! Form::label('nom', __('models/transitaireAlgs.fields.nom') . ' :') !!}
+    {!! Form::label('nom', __('models/transitaireAlgs.fields.nom') . ' :', ['class' => 'required']) !!}
     {!! Form::text('nom', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Tel Field -->
 <div class="form-group col-sm-4">
-    {!! Form::label('tel', 'Téléphone :') !!}
+    {!! Form::label('tel', 'Téléphone :', ['class' => 'required']) !!}
     {!! Form::text('tel', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -30,7 +30,7 @@
 
 <!-- Ville Field -->
 <div class="form-group col-sm-4">
-    {!! Form::label('ville', __('models/transporteurs.fields.ville') . ' :') !!}
+    {!! Form::label('ville', __('models/transporteurs.fields.ville') . ' :', ['class' => 'required']) !!}
     {!! Form::text('ville', null, ['class' => 'form-control']) !!}
 </div>
 

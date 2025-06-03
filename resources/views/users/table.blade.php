@@ -31,7 +31,7 @@
                             {{ $user->status_online ? 'Connecter' : 'Déconnecter' }}
                         </span>
                     </td>
-                    <td>{{ $user->role_text }}</td>
+                    <td>{{ $user->role_text? $user->role_text : '-' }}</td>
 
                     <td>
                         {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete', 'class' => 'delete-form']) !!}

@@ -77,7 +77,7 @@
                         <td style="text-align: left"><b>Date Facture :</b> {{ $facturesDossier->dateFacturation->format('Y-m-d') }}</td>
                     </tr>
                     <tr>
-                        <td style="text-align: left"><b>Référence :</b> {{ $facturesDossier->dossiers->reference }}</td>
+                        <td style="text-align: left"><b>Référence :</b> {{ $facturesDossier->dossiers->reference ? $facturesDossier->dossiers->reference : '-' }}</td>
                     </tr>
                 </table>
             </div>
@@ -89,7 +89,7 @@
                     </tr>
                     <tr>
                         <td><b>Adresse :</b>
-                            {{ $facturesDossier->dossiers ? $facturesDossier->dossiers->clients->adresse : '-' }}</td>
+                            {{ $facturesDossier->dossiers->clients->adresse ? $facturesDossier->dossiers->clients->adresse : '-' }}</td>
                     </tr>
                 </table>
             </div>

@@ -18,12 +18,12 @@
                 <tr>
                     <td>{{ $transitaireTanger->nom }}</td>
                     <td>{{ $transitaireTanger->tel }}</td>
-                    <td>{{ $transitaireTanger->fax }}</td>
-                    <td>{{ $transitaireTanger->gsm }}</td>
-                    <td>{{ $transitaireTanger->email }}</td>
-                    <td>{{ $transitaireTanger->adresse }}</td>
+                    <td>{{ $transitaireTanger->fax ? $transitaireTanger->fax : '-' }}</td>
+                    <td>{{ $transitaireTanger->gsm ? $transitaireTanger->gsm : '-' }}</td>
+                    <td>{{ $transitaireTanger->email ? $transitaireTanger->email : '-' }}</td>
+                    <td>{{ $transitaireTanger->adresse ? $transitaireTanger->adresse : '-' }}</td>
                     <td>{{ $transitaireTanger->ville }}</td>
-                    <td>{{ $transitaireTanger->Ncompte }}</td>
+                    <td>{{ $transitaireTanger->Ncompte ? $transitaireTanger->Ncompte : '-' }}</td>
                     <td width="200">
                         <div class='action-buttons d-flex flex-wrap gap-2'>
                             <a href="{{ route('transitaireTangers.show', [$transitaireTanger->id]) }}" title="Détails"

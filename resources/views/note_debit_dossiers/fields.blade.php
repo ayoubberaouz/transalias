@@ -33,7 +33,7 @@
                     <!-- Mat Tracteur Field -->
                     <div class="col-md-4 col-lg-3">
                         {!! Form::label('mat_tracteur', 'Matricule du tracteur :') !!}
-                        <p>{{ $dossiers->mat_tracteur }}</p>
+                        <p>{{ $dossiers->mat_tracteur ? $dossiers->mat_tracteur : '-' }}</p>
                     </div>
 
                     <!-- Mat Remorque Field -->
@@ -92,56 +92,56 @@
                     <!-- Reference Field -->
                     <div class="col-md-4 col-lg-3">
                         {!! Form::label('reference', 'Référence :') !!}
-                        <p>{{ $dossiers->reference }}</p>
+                        <p>{{ $dossiers->reference ? $dossiers->reference : '-' }}</p>
                     </div>
 
                     <!-- Transporteur Field -->
                     <div class="col-md-4 col-lg-3">
                         {!! Form::label('transporteur', __('models/dossiers.fields.transporteur') . ' :') !!}
-                        <p>{{ $dossiers->transporteur }}</p>
+                        <p>{{ $dossiers->transporteur ? $dossiers->transporteur : '-' }}</p>
                     </div>
 
                     <!-- Navire Field -->
                     <div class="col-md-4 col-lg-3">
                         {!! Form::label('navire', 'Navire :') !!}
-                        <p>{{ $dossiers->navire }}</p>
+                        <p>{{ $dossiers->navire ? $dossiers->navire : '-' }}</p>
                     </div>
 
                     <!-- Date Embarquement Field -->
                     <div class="col-md-4 col-lg-3">
                         {!! Form::label('date_embarquement', "Date d'embarquement :") !!}
-                        <p>{{ $dossiers->date_embarquement ? $dossiers->date_embarquement->format('Y-m-d') : '' }}</p>
+                        <p>{{ $dossiers->date_embarquement ? $dossiers->date_embarquement->format('Y-m-d') : '-' }}</p>
                     </div>
 
                     <!-- Date Sortie Port Field -->
                     <div class="col-md-4 col-lg-3">
                         {!! Form::label('date_sortie_port', 'Date sortie de port :') !!}
-                        <p>{{ $dossiers->date_sortie_port ? $dossiers->date_sortie_port->format('Y-m-d') : '' }}</p>
+                        <p>{{ $dossiers->date_sortie_port ? $dossiers->date_sortie_port->format('Y-m-d') : '-' }}</p>
                     </div>
 
                     <!-- Date Livraison Field -->
                     <div class="col-md-4 col-lg-3">
                         {!! Form::label('date_livraison', 'Date de livraison :') !!}
-                        {{ $dossiers->date_livraison ? $dossiers->date_livraison->format('Y-m-d') : '' }}
+                        <p>{{ $dossiers->date_livraison ? $dossiers->date_livraison->format('Y-m-d') : '-' }}</p>
                     </div>
 
                     <div class="col-md-4 col-lg-3">
                         {!! Form::label('transitairealg', 'Transitaire Alg :') !!}
-                        <p>{{ $dossiers->transitairealg }}</p>
+                        <p>{{ $dossiers->transitairealg ? $dossiers->transitairealg : '-' }}</p>
                     </div>
 
                     <div class="col-md-4 col-lg-3">
                         {!! Form::label('transitaire', 'Transitaire Tanger :') !!}
-                        <p>{{ $dossiers->transitaire }}</p>
+                        <p>{{ $dossiers->transitaire ? $dossiers->transitaire : '-' }}</p>
                     </div>
 
-                    {{-- <div class="col-md-4 col-lg-3">
+                    <div class="col-md-4 col-lg-3">
                         {!! Form::label('date_courrier', 'Date de courrier :') !!}
-                        <p>{{ $dossiers->date_courrier->format('Y-m-d') }}</p>
-                    </div> --}}
+                        <p>{{ $dossiers->date_courrier ? $dossiers->date_courrier->format('Y-m-d') : '-' }}</p>
+                    </div>
                     <div class="col-md-4 col-lg-3">
                         {!! Form::label('observation', 'Remarque :') !!}
-                        <p>{{ $dossiers->observation }}</p>
+                        <p>{{ $dossiers->observation ? $dossiers->observation : '-'}}</p>
                     </div>
                 </div>
             </div>

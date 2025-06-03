@@ -18,9 +18,9 @@
                 <tr>
                     <td>{{ $clients->nom }}</td>
                     <td>{{ $clients->raison_social }}</td>
-                    <td>{{ $clients->referenc }}</td>
+                    <td>{{ $clients->referenc ? $clients->referenc : '-' }}</td>
                     <td>{{ $clients->tel }}</td>
-                    <td>{{ $clients->email }}</td>
+                    <td>{{ $clients->email ? $clients->email : '-' }}</td>
                     <td>{{ $clients->ville }}</td>
                     <td>
                         @if ($clients->societe == 1)
@@ -33,7 +33,7 @@
                             -
                         @endif
                     </td>
-                    <td>{{ $clients->nCompte }}</td>
+                    <td>{{ $clients->nCompte ? $clients->nCompte : '-' }}</td>
                     <td width="200">
                         <div class="action-buttons d-flex flex-wrap gap-2">
                             <a href="{{ route('clients.show', [$clients->id]) }}"

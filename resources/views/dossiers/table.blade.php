@@ -19,11 +19,11 @@
                 <tr>
                     <td>{{ $dossiers->annee_dossier }}</td>
                     <td>{{ $dossiers->clients ? $dossiers->clients->nom : '-' }}</td>
-                    <td>{{ $dossiers->reference }}</td>
-                    <td>{{ $dossiers->transporteur }}</td>
+                    <td>{{ $dossiers->reference ? $dossiers->reference : '-' }}</td>
+                    <td>{{ $dossiers->transporteur ? $dossiers->transporteur : '-' }}</td>
                     <td>{{ $dossiers->date_charg->format('Y-m-d') }}</td>
                     <td>{{ $dossiers->mat_remorque }}</td>
-                    <td>{{ $dossiers->mat_tracteur }}</td>
+                    <td>{{ $dossiers->mat_tracteur ? $dossiers->mat_tracteur : '-' }}</td>
                     <td>{{ $dossiers->expediteur }}</td>
                     <td>{{ $dossiers->destinsation }}</td>
                     <td width="200">
@@ -36,7 +36,7 @@
 
                             @if ($dossiers->etat_cloture == 0)
                                 {!! Form::button('<i class="fas fa-lock"></i>', [
-                                    'type' => 'button', // Important: change from submit to button
+                                    'type' => 'button',
                                     'class' => 'btn btn-outline-danger px-2 py-1 btn-cloture-confirm',
                                     'title' => 'Clôturé',
                                     'data-id' => $dossiers->id,

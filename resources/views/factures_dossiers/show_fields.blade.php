@@ -113,25 +113,25 @@
 <!-- Date Embarquement Field -->
 <div class="col-md-4 col-lg-3">
     {!! Form::label('date_embarquement', "Date d'embarquement :") !!}
-    <p>{{ $dossiers->date_embarquement->format('Y-m-d') }}</p>
+    <p>{{ $dossiers->date_embarquement ? $dossiers->date_embarquement->format('Y-m-d') : '-' }}</p>
 </div>
 
 <!-- Date Sortie Port Field -->
 <div class="col-md-4 col-lg-3">
     {!! Form::label('date_sortie_port', 'Date sortie de port :') !!}
-    <p>{{ $dossiers->date_sortie_port->format('Y-m-d') }}</p>
+    <p>{{ $dossiers->date_sortie_port ? $dossiers->date_sortie_port->format('Y-m-d') : '-' }}</p>
 </div>
 
 <!-- Date Livraison Field -->
 <div class="col-md-4 col-lg-3">
     {!! Form::label('date_livraison', 'Date de livraison :') !!}
-    <p>{{ $dossiers->date_livraison->format('Y-m-d') }}</p>
+    <p>{{ $dossiers->date_livraison ? $dossiers->date_livraison->format('Y-m-d') : '-' }}</p>
 </div>
 
 <!-- Date Courrier Field -->
 <div class="col-md-4 col-lg-3">
     {!! Form::label('date_courrier', 'Date de courrier :') !!}
-    <p>{{ $dossiers->date_courrier->format('Y-m-d') }}</p>
+    <p>{{ $dossiers->date_courrier ? $dossiers->date_courrier->format('Y-m-d') : '-' }}</p>
 </div>
 
 <!-- Remarque Field -->

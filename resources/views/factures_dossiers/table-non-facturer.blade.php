@@ -28,8 +28,8 @@
                     </td>
                     <td>{{ $dossiers->clients ? $dossiers->clients->nom : '-' }}</td>
                     <td>{{ $dossiers->annee_dossier }}</td>
-                    <td>{{ $dossiers->transporteur }}</td>
-                    <td>{{ $dossiers->mat_tracteur }}</td>
+                    <td>{{ $dossiers->transporteur ? $dossiers->transporteur : '-' }}</td>
+                    <td>{{ $dossiers->mat_tracteur ? $dossiers->mat_tracteur : '-' }}</td>
                     <td>{{ $dossiers->mat_remorque }}</td>
                     <td>{{ $dossiers->date_charg->format('Y-m-d') }}</td>
                     <td>

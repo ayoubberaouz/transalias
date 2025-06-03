@@ -78,7 +78,8 @@
                             {{ $noteDebitDossier->datenotationdebit->format('Y-m-d') }}</td>
                     </tr>
                     <tr>
-                        <td style="text-align: left"><b>Référence :</b> {{ $noteDebitDossier->dossiers->reference }}
+                        <td style="text-align: left"><b>Référence :</b>
+                            {{ $noteDebitDossier->dossiers->reference ? $noteDebitDossier->dossiers->reference : '-' }}
                         </td>
                     </tr>
                 </table>
@@ -92,7 +93,8 @@
                     </tr>
                     <tr>
                         <td style="text-align: left"><b>Adresse :</b>
-                            {{ $noteDebitDossier->dossiers ? $noteDebitDossier->dossiers->clients->adresse : '-' }}</td>
+                            {{ $noteDebitDossier->dossiers->clients->adresse ? $noteDebitDossier->dossiers->clients->adresse : '-' }}
+                        </td>
                     </tr>
                 </table>
             </div>
@@ -156,9 +158,11 @@
                         <td style="height: 400px; text-align: left; width: 380px">
                             <span>TRANSPORT :</span>
                             <br>
-                            <span>{{ $noteDebitDossier->dossiers->expediteur }} ({{ $noteDebitDossier->dossiers->lien_chargement }})</span>
+                            <span>{{ $noteDebitDossier->dossiers->expediteur }}
+                                ({{ $noteDebitDossier->dossiers->lien_chargement }})</span>
                             <br>
-                            <span>=> {{ $noteDebitDossier->dossiers->destinsation }} ({{ $noteDebitDossier->dossiers->lieu_livraison }})</span>
+                            <span>=> {{ $noteDebitDossier->dossiers->destinsation }}
+                                ({{ $noteDebitDossier->dossiers->lieu_livraison }})</span>
                             <br>
                             <br>
                             <br>
@@ -210,7 +214,7 @@
                                 <span>{{ $noteDebitDossier->notedebit5 . ' ' . $noteDebitDossier->a_paye }}
                                 </span>
                             @endif
-                            
+
                             <br>
                             <br>
                             <br>

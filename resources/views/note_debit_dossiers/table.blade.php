@@ -31,8 +31,8 @@
                     <td>{{ $noteDebitDossier->numnotedebit }}</td>
                     <td>{{ $noteDebitDossier->annee_dossier }}</td>
                     <td>{{ $noteDebitDossier->client ? $noteDebitDossier->dossiers->clients->nom : '-' }}</td>
-                    <td>{{ $noteDebitDossier->transporteur }}</td>
-                    <td>{{ $noteDebitDossier->mat_tracteur }}</td>
+                    <td>{{ $noteDebitDossier->transporteur ? $noteDebitDossier->transporteur : '-' }}</td>
+                    <td>{{ $noteDebitDossier->mat_tracteur ? $noteDebitDossier->mat_tracteur : '-' }}</td>
                     <td>{{ $noteDebitDossier->mat_remorque }}</td>
                     <td>{{ $noteDebitDossier->datenotationdebit->format('Y-m-d') }}</td>
                     <td>

@@ -16,7 +16,7 @@
             </div>
 
             <div class="row d-flex justify-content-end">
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <form method="GET" action="{{ route('export-dossiers') }}">
                         <div class="row">
                             <div class="col-md-4 mt-2 text-right">

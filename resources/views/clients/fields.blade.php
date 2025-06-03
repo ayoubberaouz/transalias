@@ -1,12 +1,12 @@
 <!-- Nom Field -->
 <div class="form-group col-md-4">
-    {!! Form::label('nom', 'Nom :') !!}
+    {!! Form::label('nom', 'Nom :', ['class' => 'required']) !!}
     {!! Form::text('nom', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Raison Social Field -->
 <div class="form-group col-md-4">
-    {!! Form::label('raison_social', 'Nom du contact :') !!}
+    {!! Form::label('raison_social', 'Nom du contact :', ['class' => 'required']) !!}
     {!! Form::text('raison_social', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -18,7 +18,7 @@
 
 <!-- Tel Field -->
 <div class="form-group col-md-4">
-    {!! Form::label('tel', 'Téléphone :') !!}
+    {!! Form::label('tel', 'Téléphone :', ['class' => 'required']) !!}
     {!! Form::text('tel', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -48,7 +48,7 @@
 
 <!-- Ville Field -->
 <div class="form-group col-md-4">
-    {!! Form::label('ville', __('models/clients.fields.ville') . ' :') !!}
+    {!! Form::label('ville', __('models/clients.fields.ville') . ' :', ['class' => 'required']) !!}
     {!! Form::text('ville', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -60,7 +60,7 @@
 
 <!-- Societe Field -->
 <div class="form-group col-md-4">
-    {!! Form::label('societe', 'Société :') !!}
+    {!! Form::label('societe', 'Société :', ['class' => 'required']) !!}
     {!! Form::select('societe', ['1' => 'Transalias', '2' => 'Akbar Services', '3' => 'Inter Global Africa'], null, [
         'class' => 'form-control custom-select',
     ]) !!}

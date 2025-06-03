@@ -31,8 +31,8 @@
                     <td>{{ $f->numFacturation }}</td>
                     <td>{{ $f->annee_dossier }}</td>
                     <td>{{ $f->client ? $f->dossiers->clients->nom : '-' }}</td>
-                    <td>{{ $f->transporteur }}</td>
-                    <td>{{ $f->mat_tracteur }}</td>
+                    <td>{{ $f->transporteur ? $f->transporteur : '-' }}</td>
+                    <td>{{ $f->mat_tracteur ? $f->mat_tracteur : '-' }}</td>
                     <td>{{ $f->mat_remorque }}</td>
                     <td>{{ $f->dateFacturation->format('Y-m-d') }}</td>
                     <td>

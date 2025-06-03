@@ -2,13 +2,13 @@
     <div class="row">
         <!-- Name Field -->
         <div class="form-group col-sm-6">
-            {!! Form::label('name', 'Name:',['class' => 'required']) !!}
+            {!! Form::label('name', 'Nom:',['class' => 'required']) !!}
             {!! Form::text('name', null, ['class' => 'form-control']) !!}
         </div>
 
         <!-- Title Field -->
         <div class="form-group col-sm-6">
-            {!! Form::label('title', 'Title:') !!}
+            {!! Form::label('title', 'Titre:') !!}
             {!! Form::text('title', null, ['class' => 'form-control']) !!}
         </div>
 

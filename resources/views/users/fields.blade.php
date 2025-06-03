@@ -7,7 +7,7 @@
 <!-- Email Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('email', 'Email :', ['class' => 'required']) !!}
-    {!! Form::text('email', null, ['class' => 'form-control']) !!}
+    {!! Form::email('email', null, ['class' => 'form-control']) !!}
 </div>
 <!-- Role Field -->
 <div class="form-group col-sm-6">

@@ -26,14 +26,18 @@
                 <tr>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ $user->status_online }}</td>
+                    <td>
+                        <span class="badge {{ $user->status_online ? 'badge-success' : 'badge-danger' }}">
+                            {{ $user->status_online ? 'Connecter' : 'Déconnecter' }}
+                        </span>
+                    </td>
                     <td>{{ $user->role_text }}</td>
-                    
+
                     <td>
                         {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete', 'class' => 'delete-form']) !!}
                         <div>
-                            <a href="{{ route('users.edit', [$user->id]) }}"
-                                class="btn btn-outline-warning px-2 py-1" title="Modifier">
+                            <a href="{{ route('users.edit', [$user->id]) }}" class="btn btn-outline-warning px-2 py-1"
+                                title="Modifier">
                                 <i class="fas fa-edit"></i>
                             </a>
                             <button type="button" class="btn btn-outline-danger px-2 py-1 show-confirm"
@@ -41,7 +45,7 @@
                                 <i class="far fa-trash-alt"></i>
                             </button>
                         </div>
-                    {!! Form::close() !!}
+                        {!! Form::close() !!}
                     </td>
                 </tr>
             @endforeach
@@ -89,4 +93,3 @@
         });
     });
 </script>
-

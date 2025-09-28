@@ -37,8 +37,7 @@ Key objectives include:
 ---
 
 ## 📸 Screenshots
-![Dashboard Preview](images/screenshot.png)  
-*(Example of the dashboard with transport cases, invoices, and debit notes statistics)*  
+![Dashboard Preview](/public/images/Screenshot.png)   
 
 ---
 
